@@ -8,7 +8,6 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
-
 class DetailWarung : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,7 +15,7 @@ class DetailWarung : AppCompatActivity() {
         setContentView(R.layout.activity_detail_warung)
         val btnEdit = findViewById<Button>(R.id.btnEdit)
         val btnDelete = findViewById<Button>(R.id.btnDelete)
-        val updatedGambar: String? = intent?.getStringExtra("WARUNG_LOGO") // Use "WARUNG_LOGO" here
+        val updatedLogo: String? = intent?.getStringExtra("WARUNG_LOGO") // Use "WARUNG_LOGO" here
         val idWarung: String? = intent.getStringExtra("WARUNG_ID")
         val dbHelper = DBHelper(this)
         val warung: DBHelper.Warung = dbHelper.cariWarung(idWarung)
@@ -30,9 +29,9 @@ class DetailWarung : AppCompatActivity() {
         idWarungTextView.text = "ID Warung: ${warung.id}"
         namaWarungTextView.text = "Nama Warung: ${warung.nama}"
 
-        if (!updatedGambar.isNullOrBlank()) {
+        if (!updatedLogo.isNullOrBlank()) {
             Glide.with(this)
-                .load(updatedGambar)
+                .load(updatedLogo)
                 .placeholder(R.drawable.placeholder_image)
                 .into(imageDetailLogo)
         } else {
@@ -65,3 +64,4 @@ class DetailWarung : AppCompatActivity() {
         }
     }
 }
+

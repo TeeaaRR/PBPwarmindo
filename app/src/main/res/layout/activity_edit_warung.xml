@@ -13,17 +13,29 @@
         android:layout_height="wrap_content"
         android:hint="Masukkan nama" />
 
-    <EditText
-        android:id="@+id/etLogoWarung"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Masukkan Logo" />
+    <ImageView
+        android:id="@+id/ivLogoWarung"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/placeholder_image" />
 
-    <EditText
-        android:id="@+id/etGambarWarung"
+    <Button
+        android:id="@+id/btnLogoWarung"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Masukkan Gambar" />
+        android:text="Pilih Logo" />
+
+    <ImageView
+        android:id="@+id/ivGambarWarung"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/placeholder_image" />
+
+    <Button
+        android:id="@+id/btnGambarWarung"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pilih Gambar" />
 
     <Button
         android:id="@+id/saveEdit"
