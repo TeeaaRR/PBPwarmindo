@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sqlitefixnocap.DBHelper
 import com.example.sqlitefixnocap.R
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class ViewMenu : AppCompatActivity() {
 
@@ -17,8 +19,7 @@ class ViewMenu : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_menu)
-        val btnCreateMenu = findViewById<Button>(R.id.btnCreateMenu)
-        val btnWarung = findViewById<Button>(R.id.btnWarung)
+        val btnCreateMenu = findViewById<FloatingActionButton>(R.id.btnCreateMenu)
 
         recyclerView = findViewById(R.id.recyclerView)
         dbHelper = DBHelper(this)
@@ -39,9 +40,21 @@ class ViewMenu : AppCompatActivity() {
             startActivity(intent)
         }
 
-        btnWarung.setOnClickListener {
-            val intent = Intent(applicationContext, ViewActivity::class.java)
-            startActivity(intent)
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        bottomNavigationView.setSelectedItemId(R.id.nav_menu)
+
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId){
+                R.id.nav_menu -> {
+                    true
+                }
+                R.id.nav_warung -> {
+                    val intent = Intent(this, ViewActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                else -> false
+            }
         }
     }
 }

@@ -83,6 +83,7 @@
         android:background="@drawable/outline_square_24"
         android:drawableStart="@drawable/outline_lock_24"
         android:drawableTint="#98592A"
+        android:drawablePadding="10dp"
         android:hint="Password"
         android:inputType="textPassword"
         android:padding="10dp"
