@@ -1,0 +1,53 @@
+<!-- dialog_detail_warung.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/textDetailIdWarung"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ID Warung:"
+        android:textStyle="bold"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textDetailNamaWarung"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nama Warung:"
+        android:textSize="14sp"
+        android:layout_marginTop="8dp"/>
+
+    <ImageView
+        android:id="@+id/imageLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_launcher_foreground"
+        android:layout_gravity="center_horizontal"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"/>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp">
+        <Button
+            android:id="@+id/btnEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="Edit"/>
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete"/>
+    </LinearLayout>
+    <!-- Tambahkan elemen lain untuk menampilkan detail warung sesuai kebutuhan Anda -->
+
+</LinearLayout>

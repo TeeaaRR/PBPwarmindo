@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SQLiteFixNoCap</string>
+    <string-array name="options_array">
+        <item>Makanan</item>
+        <item>Minuman</item>
+    </string-array>
+</resources>

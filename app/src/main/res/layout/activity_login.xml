@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="360dp"
+        android:layout_height="111dp"
+        app:srcCompat="@drawable/logoperusahaan"
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="108dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="126dp"
+        android:layout_height="44dp"
+        android:text="Remember me"
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="482dp" />
+
+    <TextView
+        android:id="@+id/regis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="500dp"
+        android:text="Belum punya akun? Regitrasi disini"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnsignin1"
+        android:layout_width="358dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="56dp"
+        android:backgroundTint="#98592A"
+        android:text="Sign in"
+        app:cornerRadius="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password1"
+        app:strokeColor="#E5B07E"
+        app:strokeWidth="2dp" />
+
+    <EditText
+        android:id="@+id/password1"
+        android:layout_width="360dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/outline_square_24"
+        android:drawableStart="@drawable/outline_lock_24"
+        android:drawableTint="#98592A"
+        android:hint="Password"
+        android:padding="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username1" />
+
+    <EditText
+        android:id="@+id/username1"
+        android:layout_width="360dp"
+        android:layout_height="45dp"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="352dp"
+        android:background="@drawable/outline_square_24"
+        android:drawableStart="@drawable/baseline_person_outline_24"
+        android:drawablePadding="10dp"
+        android:drawableTint="#98592A"
+        android:hint="Username"
+        android:padding="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selamat Datang!"
+        android:textColor="#98592A"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="298dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

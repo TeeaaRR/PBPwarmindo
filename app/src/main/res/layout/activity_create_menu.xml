@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CreateMenu">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Data Menu"
+        android:textSize="20dp"
+        android:textAlignment="center"/>
+
+    <EditText
+        android:id="@+id/edIdMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Masukkan Id Menu"
+        android:padding="12dp"/>
+    <!-- Menambahkan padding pada EditText -->
+
+    <EditText
+        android:id="@+id/edNamaMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Masukkan Nama Menu"
+        android:padding="12dp"/>
+
+    <EditText
+        android:id="@+id/hargaMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Masukkan Harga Menu"
+        android:padding="12dp"/>
+
+    <EditText
+        android:id="@+id/gambarMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Masukkan Gambar Menu"
+        android:padding="12dp"/>
+
+    <EditText
+        android:id="@+id/kategoriMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Masukkan Kategori Menu"
+        android:padding="12dp"/>
+
+    <Button
+        android:id="@+id/btnAddMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tambahkan"/>
+
+</LinearLayout>

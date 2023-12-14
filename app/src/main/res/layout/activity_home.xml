@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".HomeActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Data Warung"
+        android:textSize="20dp"
+        android:textAlignment="center"/>
+
+    <EditText
+        android:id="@+id/edIdWarung"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Masukkan Id Warung"
+        android:layout_marginTop="50dp"/>
+
+    <EditText
+        android:id="@+id/edNamaWarung"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Masukkan Nama Warung"
+        android:layout_marginTop="110dp"/>
+
+    <EditText
+        android:id="@+id/logoWarung"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Masukkan Logo Warung"
+        android:layout_marginTop="170dp"/>
+
+    <Button
+        android:id="@+id/btnUploadImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Upload Image"
+        android:textAllCaps="false"
+        android:layout_marginTop="230dp"/>
+
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tambahkan"
+        android:textAllCaps="false"
+        android:layout_marginTop="290dp"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/btnView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lihat Data"
+        android:textAllCaps="false"
+        android:layout_marginTop="350dp"
+        android:gravity="center"/>
+
+</RelativeLayout>
