@@ -3,9 +3,9 @@ package com.example.sqlitefixnocap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class NavbarActivity : AppCompatActivity() {
+class Navigation : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_navbar)
+        setContentView(R.layout.activity_navigation)
     }
 }
