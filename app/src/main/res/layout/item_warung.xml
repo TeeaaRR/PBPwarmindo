@@ -6,6 +6,15 @@
     android:padding="8dp">
 
     <ImageView
+        android:id="@+id/imageGambar"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:src="@drawable/ic_launcher_foreground"
+        android:layout_gravity="center_horizontal"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"/>
+
+    <ImageView
         android:id="@+id/imageLogo"
         android:layout_width="300dp"
         android:layout_height="200dp"

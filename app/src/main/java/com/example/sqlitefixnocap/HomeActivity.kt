@@ -21,8 +21,6 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var lihatdata: Button
     private lateinit var DB: DBHelper
 
-    private val PICK_IMAGE_REQUEST = 1
-
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,11 +35,11 @@ class HomeActivity : AppCompatActivity() {
         DB = DBHelper(this)
 
         btnUploadImage.setOnClickListener {
-            openGallery()
+            openGalleryGambar()
         }
 
         btnUploadLogo.setOnClickListener {
-            openGallery()
+            openGalleryLogo()
         }
 
         tambahkan.setOnClickListener {
@@ -71,22 +69,44 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    private var selectedImageUri: Uri? = null
-    private var selectedLogoUri: Uri? = null
+    var selectedImageUri: Uri? = null
+    var selectedLogoUri: Uri? = null
 
-    private fun openGallery() {
+    private val PICK_IMAGE_REQUEST = 1
+    private val PICK_LOGO_REQUEST = 2
+
+    private fun openGalleryGambar() {
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         startActivityForResult(intent, PICK_IMAGE_REQUEST)
+    }
+
+    private fun openGalleryLogo() {
+        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        startActivityForResult(intent, PICK_LOGO_REQUEST)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
-            selectedImageUri = data.data
-            selectedLogoUri = data.data
-            // Optionally, display the selected image's path or name in a TextView or EditText
-            // Example: textgambar.setText(selectedImageUri.toString())
+        if (resultCode == Activity.RESULT_OK && data != null) {
+            when (requestCode) {
+                PICK_IMAGE_REQUEST -> {
+                    // Ini untuk pemilihan gambar
+                    selectedImageUri = data.data // Memperbarui variabel kelas dengan URI gambar yang dipilih
+                    // Lakukan sesuatu dengan selectedImageUri
+                    // Misalnya: tampilkan path atau nama gambar di TextView
+                }
+                PICK_LOGO_REQUEST -> {
+                    // Ini untuk pemilihan logo
+                    selectedLogoUri = data.data // Memperbarui variabel kelas dengan URI logo yang dipilih
+                    // Lakukan sesuatu dengan selectedLogoUri
+                    // Misalnya: tampilkan path atau nama logo di TextView
+                }
+                else -> {
+                    // Jika requestCode tidak sesuai dengan yang diharapkan
+                    // Tambahkan penanganan kesalahan jika diperlukan
+                }
+            }
         }
     }
 }

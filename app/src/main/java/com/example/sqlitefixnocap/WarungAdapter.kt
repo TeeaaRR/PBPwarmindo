@@ -33,7 +33,7 @@ class WarungAdapter(private val context: Context, private val warungList: List<D
 
             bundle.putString("WARUNG_ID", warung.id)
             bundle.putString("WARUNG_NAMA", warung.nama)
-            bundle.putString("WARUNG_LOGO", warung.gambar) // Use "WARUNG_LOGO" here
+            bundle.putString("WARUNG_LOGO", warung.logo) // Use "WARUNG_LOGO" here
             bundle.putString("WARUNG_GAMBAR", warung.gambar)
 
             intent.putExtras(bundle)
@@ -49,6 +49,7 @@ class WarungAdapter(private val context: Context, private val warungList: List<D
         private val idWarungTextView: TextView = itemView.findViewById(R.id.textIdWarung)
         private val namaWarungTextView: TextView = itemView.findViewById(R.id.textNamaWarung)
         private val logoImageView: ImageView = itemView.findViewById(R.id.imageLogo)
+        private val gambarImageView: ImageView = itemView.findViewById(R.id.imageGambar)
 
         fun bind(warung: DBHelper.Warung) {
             idWarungTextView.text = warung.id.toString()
@@ -59,9 +60,17 @@ class WarungAdapter(private val context: Context, private val warungList: List<D
                 .load(warung.gambar)
                 .placeholder(R.drawable.placeholder_image)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(logoImageView)
+                .into(gambarImageView)
 
             Log.d("WarungAdapter", "Image URL: ${warung.gambar}")
+
+            Glide.with(context)
+                .load(warung.logo)
+                .placeholder(R.drawable.placeholder_image)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(logoImageView)
+
+            Log.d("WarungAdapter", "Image URL: ${warung.logo}")
         }
     }
 }
