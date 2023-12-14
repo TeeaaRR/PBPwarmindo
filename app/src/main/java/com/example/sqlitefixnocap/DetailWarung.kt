@@ -15,31 +15,31 @@ class DetailWarung : AppCompatActivity() {
         setContentView(R.layout.activity_detail_warung)
         val btnEdit = findViewById<Button>(R.id.btnEdit)
         val btnDelete = findViewById<Button>(R.id.btnDelete)
-        val updatedLogo: String? = intent?.getStringExtra("WARUNG_LOGO") // Use "WARUNG_LOGO" here
+        val updatedGambar: String? = intent?.getStringExtra("WARUNG_GAMBAR") // Use "WARUNG_LOGO" here
         val idWarung: String? = intent.getStringExtra("WARUNG_ID")
         val dbHelper = DBHelper(this)
         val warung: DBHelper.Warung = dbHelper.cariWarung(idWarung)
 
         val idWarungTextView: TextView = findViewById(R.id.textDetailIdWarung)
         val namaWarungTextView: TextView = findViewById(R.id.textDetailNamaWarung)
-        val imageDetailLogo: ImageView = findViewById(R.id.imageLogo)
+        val imageDetailGambar: ImageView = findViewById(R.id.imageGambar)
         val imageUrl = warung.gambar
         Log.d("DetailWarung", "Image URL: $imageUrl")
 
         idWarungTextView.text = "ID Warung: ${warung.id}"
         namaWarungTextView.text = "Nama Warung: ${warung.nama}"
 
-        if (!updatedLogo.isNullOrBlank()) {
+        if (!updatedGambar.isNullOrBlank()) {
             Glide.with(this)
-                .load(updatedLogo)
+                .load(updatedGambar)
                 .placeholder(R.drawable.placeholder_image)
-                .into(imageDetailLogo)
+                .into(imageDetailGambar)
         } else {
             // Load a default image or handle the case where the URL is empty
             Glide.with(this)
                 .load(warung.gambar)
                 .placeholder(R.drawable.placeholder_image)
-                .into(imageDetailLogo)
+                .into(imageDetailGambar)
         }
 
         btnEdit.setOnClickListener {
