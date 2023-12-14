@@ -43,12 +43,13 @@
         android:hint="Masukkan Gambar Menu"
         android:padding="12dp"/>
 
-    <EditText
+    <Spinner
         android:id="@+id/kategoriMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Masukkan Kategori Menu"
-        android:padding="12dp"/>
+        android:entries="@array/options_array"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"/>
 
     <Button
         android:id="@+id/btnAddMenu"

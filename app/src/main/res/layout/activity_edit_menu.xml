@@ -25,11 +25,13 @@
         android:layout_height="wrap_content"
         android:hint="Masukkan Gambar" />
 
-    <EditText
+    <Spinner
         android:id="@+id/etKategoriMenu"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Masukkan Kategori" />
+        android:entries="@array/options_array"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"/>
 
     <Button
         android:id="@+id/saveEdit"
