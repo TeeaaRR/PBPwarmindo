@@ -28,12 +28,13 @@
         android:hint="Masukkan Nama Warung"
         android:layout_marginTop="110dp"/>
 
-    <EditText
-        android:id="@+id/logoWarung"
+    <Button
+        android:id="@+id/btnUploadLogo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Masukkan Logo Warung"
-        android:layout_marginTop="170dp"/>
+        android:text="Upload Logo"
+        android:textAllCaps="false"
+        android:layout_marginTop="180dp"/>
 
     <Button
         android:id="@+id/btnUploadImage"
