@@ -3,12 +3,15 @@ package com.example.sqlitefixnocap
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
+import android.media.Image
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 
 class HomeActivity : AppCompatActivity() {
@@ -92,15 +95,17 @@ class HomeActivity : AppCompatActivity() {
             when (requestCode) {
                 PICK_IMAGE_REQUEST -> {
                     // Ini untuk pemilihan gambar
-                    selectedImageUri = data.data // Memperbarui variabel kelas dengan URI gambar yang dipilih
-                    // Lakukan sesuatu dengan selectedImageUri
-                    // Misalnya: tampilkan path atau nama gambar di TextView
+                    selectedImageUri = data.data
+                    val previewGambar = findViewById<ImageView>(R.id.previewGambar)
+                    previewGambar.setImageURI(selectedImageUri)
+                    previewGambar.visibility = View.VISIBLE
                 }
                 PICK_LOGO_REQUEST -> {
                     // Ini untuk pemilihan logo
                     selectedLogoUri = data.data // Memperbarui variabel kelas dengan URI logo yang dipilih
-                    // Lakukan sesuatu dengan selectedLogoUri
-                    // Misalnya: tampilkan path atau nama logo di TextView
+                    val previewLogo = findViewById<ImageView>(R.id.previewLogo)
+                    previewLogo.setImageURI(selectedLogoUri)
+                    previewLogo.visibility = View.VISIBLE
                 }
                 else -> {
                     // Jika requestCode tidak sesuai dengan yang diharapkan
