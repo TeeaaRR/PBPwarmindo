@@ -21,7 +21,7 @@ class DBHelper(context: Context) :
         MyDB.execSQL("create Table users(username TEXT primary key, password TEXT)")
         MyDB.execSQL("create Table warung(idwarung TEXT primary key, namawarung TEXT, logo TEXT, gambar TEXT)")
         MyDB.execSQL("create Table menu(idmenu TEXT primary key, namamenu TEXT, hargamenu TEXT, gambarmenu TEXT, kategorimenu TEXT, idwarung TEXT, foreign key (idwarung) references warung(idwarung))")
-        MyDB.execSQL("create Table meja(kodemeja TEXT primary key, idwarung TEXT, foreign key (idwarung) references warung(idwarung))")
+        MyDB.execSQL("create Table meja(kodemeja TEXT primary key, idwarung TEXT, status TEXT, foreign key (idwarung) references warung(idwarung))")
         MyDB.execSQL("create Table transaksi(idtransaksi TEXT primary key, tanggal TEXT, waktu TEXT, shift TEXT, idpengguna TEXT, idpelanggan TEXT, status TEXT, kodemeja TEXT, namapelanggan TEXT, total TEXT, metodepembayaran TEXT, totaldiskon TEXT, idpromosi TEXT, foreign key (kodemeja) references meja(kodemeja))")
     }
 
@@ -59,6 +59,16 @@ class DBHelper(context: Context) :
         contentValues.put("kategorimenu", kategorimenu)
         contentValues.put("idwarung", idwarung)
         val result = MyDB.insert("menu", null, contentValues)
+        return result != -1L
+    }
+
+    fun insertMeja(kodemeja: String, idwarung: String): Boolean {
+        val MyDB = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put("kodemeja", kodemeja)
+        contentValues.put("idwarung", idwarung)
+        contentValues.put("status", "tersedia")
+        val result = MyDB.insert("meja", null, contentValues)
         return result != -1L
     }
 
@@ -311,4 +321,35 @@ class DBHelper(context: Context) :
         cursor.close()
         return menuList
     }
+
+    data class Meja (
+        var kodemeja: String,
+        var status: String,
+        var idwarung: String
+    )
+
+    fun getMejaByWarungID(idwarung: String): List<Meja> {
+        val mejaList = mutableListOf<Meja>()
+        val db = this.readableDatabase
+        val query = "SELECT meja.kodemeja, meja.status, meja.idwarung " +
+                "FROM meja " +
+                "INNER JOIN warung ON meja.idwarung = warung.idwarung " +
+                "WHERE meja.idwarung = ?"
+        val cursor = db.rawQuery(query, arrayOf(idwarung))
+
+        if (cursor.moveToFirst()) {
+            do {
+                // Pastikan nama kolom yang diminta sesuai dengan nama yang ada dalam tabel atau hasil kueri
+                val kodeMeja = cursor.getString(cursor.getColumnIndex("kodemeja"))
+                val status = cursor.getString(cursor.getColumnIndex("status"))
+                val idwarungmeja = cursor.getString(cursor.getColumnIndex("idwarung"))
+
+                val meja = Meja(kodeMeja, status, idwarungmeja)
+                mejaList.add(meja)
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        return mejaList
+    }
+
 }

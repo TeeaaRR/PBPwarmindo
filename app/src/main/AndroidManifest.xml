@@ -15,6 +15,9 @@
         android:theme="@style/Theme.SQLiteFixNoCap"
         tools:targetApi="31">
         <activity
+            android:name=".MejaWarung"
+            android:exported="false" />
+        <activity
             android:name=".CreateMeja"
             android:exported="false" />
         <activity

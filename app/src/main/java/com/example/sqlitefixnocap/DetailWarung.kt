@@ -17,6 +17,7 @@ class DetailWarung : AppCompatActivity() {
         val btnEdit = findViewById<Button>(R.id.btnEdit)
         val btnDelete = findViewById<Button>(R.id.btnDelete)
         val btnMenu = findViewById<Button>(R.id.btnMenu)
+        val btnMeja = findViewById<Button>(R.id.btnMeja)
         val updatedLogo: String? = intent?.getStringExtra("WARUNG_LOGO") // Use "WARUNG_LOGO" here
         val idWarung: String? = intent.getStringExtra("WARUNG_ID")
         val dbHelper = DBHelper(this)
@@ -56,6 +57,16 @@ class DetailWarung : AppCompatActivity() {
 
             intentMenu.putExtras(bundle)
             startActivity(intentMenu)
+        }
+
+        btnMeja.setOnClickListener {
+            val intentMeja = Intent(this, MejaWarung::class.java)
+            val bundle = Bundle()
+
+            bundle.putString("WARUNG_ID", warung.id)
+
+            intentMeja.putExtras(bundle)
+            startActivity(intentMeja)
         }
 
         btnDelete.setOnClickListener {
