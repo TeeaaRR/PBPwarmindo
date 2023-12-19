@@ -21,8 +21,6 @@ class DBHelper(context: Context) :
         MyDB.execSQL("create Table users(username TEXT primary key, password TEXT)")
         MyDB.execSQL("create Table warung(idwarung TEXT primary key, namawarung TEXT, logo TEXT, gambar TEXT)")
         MyDB.execSQL("create Table menu(idmenu TEXT primary key, namamenu TEXT, hargamenu TEXT, gambarmenu TEXT, kategorimenu TEXT, idwarung TEXT, foreign key (idwarung) references warung(idwarung))")
-        MyDB.execSQL("create Table meja(kodemeja TEXT primary key, idwarung TEXT, foreign key (idwarung) references warung(idwarung))")
-        MyDB.execSQL("create Table transaksi(idtransaksi TEXT primary key, tanggal TEXT, waktu TEXT, shift TEXT, idpengguna TEXT, idpelanggan TEXT, status TEXT, kodemeja TEXT, namapelanggan TEXT, total TEXT, metodepembayaran TEXT, totaldiskon TEXT, idpromosi TEXT, foreign key (kodemeja) references meja(kodemeja))")
     }
 
     override fun onUpgrade(MyDB: SQLiteDatabase, i: Int, i1: Int) {
@@ -49,7 +47,7 @@ class DBHelper(context: Context) :
         return result != -1L
     }
 
-    fun insertMenu(idmenu: String, namamenu: String, hargamenu: String, gambarmenu: String, kategorimenu: String, idwarung: String): Boolean {
+    fun insertMenu(idmenu: String, namamenu: String, hargamenu: String, gambarmenu: String, kategorimenu: String): Boolean {
         val MyDB = this.writableDatabase
         val contentValues = ContentValues()
         contentValues.put("idmenu", idmenu)
@@ -57,7 +55,6 @@ class DBHelper(context: Context) :
         contentValues.put("hargamenu", hargamenu)
         contentValues.put("gambarmenu", gambarmenu)
         contentValues.put("kategorimenu", kategorimenu)
-        contentValues.put("idwarung", idwarung)
         val result = MyDB.insert("menu", null, contentValues)
         return result != -1L
     }
@@ -190,8 +187,7 @@ class DBHelper(context: Context) :
         var namamenu: String,
         var hargamenu: String,
         var gambarmenu: String,
-        var kategorimenu: String,
-        var idwarung: String
+        var kategorimenu: String
     )
 
     fun getAllMenus(): ArrayList<Menu> {
@@ -204,7 +200,6 @@ class DBHelper(context: Context) :
         val hargamenuIndex = cursor.getColumnIndex("hargamenu")
         val gambarmenuIndex = cursor.getColumnIndex("gambarmenu")
         val kategorimenuIndex = cursor.getColumnIndex("kategorimenu")
-        val idwarungIndex = cursor.getColumnIndex("idwarung")
 
         if (idmenuIndex != -1 && namamenuIndex != -1 && hargamenuIndex != -1 && gambarmenuIndex != -1 && kategorimenuIndex != -1) {
             if (cursor.moveToFirst()) {
@@ -214,9 +209,8 @@ class DBHelper(context: Context) :
                     val hargamenu = cursor.getString(hargamenuIndex)
                     val gambarmenu = cursor.getString(gambarmenuIndex)
                     val kategorimenu = cursor.getString(kategorimenuIndex)
-                    val idwarung = cursor.getString(kategorimenuIndex)
 
-                    val menu = Menu(idmenu, namamenu, hargamenu, gambarmenu, kategorimenu, idwarung)
+                    val menu = Menu(idmenu, namamenu, hargamenu, gambarmenu, kategorimenu)
                     menusList.add(menu)
                 } while (cursor.moveToNext())
             }
@@ -227,7 +221,7 @@ class DBHelper(context: Context) :
     }
 
     fun cariMenu(idmenu: String?): DBHelper.Menu {
-        val menu = DBHelper.Menu(idmenu = "", namamenu = "", hargamenu = "", gambarmenu = "", kategorimenu = "", idwarung = "")
+        val menu = DBHelper.Menu(idmenu = "", namamenu = "", hargamenu = "", gambarmenu = "", kategorimenu = "")
 
         // Pastikan ID tidak kosong atau null sebelum melakukan query
         if (!idmenu.isNullOrEmpty()) {
@@ -268,47 +262,5 @@ class DBHelper(context: Context) :
         val db = this.writableDatabase
 
         db.delete("menu", "idmenu = ?", arrayOf(idmenu))
-    }
-
-    fun getIdWarung(): List<String> {
-        val categoriesList = mutableListOf<String>()
-        val db = this.readableDatabase
-        val query = "SELECT DISTINCT idwarung FROM warung" // Ganti your_table_name dengan nama tabel yang sesuai
-        val cursor = db.rawQuery(query, null)
-
-        if (cursor.moveToFirst()) {
-            do {
-                val idwarung = cursor.getString(cursor.getColumnIndex("idwarung"))
-                categoriesList.add(idwarung)
-            } while (cursor.moveToNext())
-        }
-        cursor.close()
-        return categoriesList
-    }
-
-    fun getMenuByWarungID(idwarung: String): List<Menu> {
-        val menuList = mutableListOf<Menu>()
-        val db = this.readableDatabase
-        val query = "SELECT menu.idmenu, menu.namamenu AS nama_menu, menu.hargamenu AS harga_menu, menu.gambarmenu, menu.kategorimenu AS kategori_menu, menu.idwarung AS id_warung " +
-                "FROM menu " +
-                "INNER JOIN warung ON menu.idwarung = warung.idwarung " +
-                "WHERE menu.idwarung = ?"
-        val cursor = db.rawQuery(query, arrayOf(idwarung))
-
-        if (cursor.moveToFirst()) {
-            do {
-                val idMenu = cursor.getString(cursor.getColumnIndex("idmenu"))
-                val namaMenu = cursor.getString(cursor.getColumnIndex("nama_menu"))
-                val hargaMenu = cursor.getString(cursor.getColumnIndex("harga_menu"))
-                val gambarMenu = cursor.getString(cursor.getColumnIndex("gambarmenu"))
-                val kategoriMenu = cursor.getString(cursor.getColumnIndex("kategori_menu"))
-                val idWarung = cursor.getString(cursor.getColumnIndex("id_warung"))
-
-                val menu = Menu(idMenu, namaMenu, hargaMenu, gambarMenu, kategoriMenu, idWarung)
-                menuList.add(menu)
-            } while (cursor.moveToNext())
-        }
-        cursor.close()
-        return menuList
     }
 }

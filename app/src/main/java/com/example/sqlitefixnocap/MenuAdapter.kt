@@ -3,15 +3,12 @@ package com.example.sqlitefixnocap
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 
 class MenuAdapter(private val context: Context, private val menuList: List<DBHelper.Menu>) :
     RecyclerView.Adapter<MenuAdapter.MenuViewHolder>() {
@@ -52,14 +49,6 @@ class MenuAdapter(private val context: Context, private val menuList: List<DBHel
         fun bind(menu: DBHelper.Menu) {
             idMenuTextView.text = menu.idmenu.toString()
             namaMenuTextView.text = menu.namamenu
-
-            Glide.with(context)
-                .load(menu.gambarmenu)
-                .placeholder(R.drawable.placeholder_image)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(logoImageView)
-
-            Log.d("WarungAdapter", "Image URL: ${menu.gambarmenu}")
             // Set gambar/logo dari warung disini, misalnya menggunakan Picasso atau Glide
             // Contoh menggunakan Picasso:
             // Picasso.get().load(warung.logoUrl).placeholder(R.drawable.default_logo).into(logoImageView)

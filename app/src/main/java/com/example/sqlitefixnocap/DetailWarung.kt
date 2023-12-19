@@ -7,7 +7,6 @@ import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import com.bumptech.glide.Glide
 class DetailWarung : AppCompatActivity() {
 
@@ -16,7 +15,6 @@ class DetailWarung : AppCompatActivity() {
         setContentView(R.layout.activity_detail_warung)
         val btnEdit = findViewById<Button>(R.id.btnEdit)
         val btnDelete = findViewById<Button>(R.id.btnDelete)
-        val btnMenu = findViewById<Button>(R.id.btnMenu)
         val updatedLogo: String? = intent?.getStringExtra("WARUNG_LOGO") // Use "WARUNG_LOGO" here
         val idWarung: String? = intent.getStringExtra("WARUNG_ID")
         val dbHelper = DBHelper(this)
@@ -56,20 +54,9 @@ class DetailWarung : AppCompatActivity() {
             startActivity(intent)
         }
 
-        btnMenu.setOnClickListener {
-            val intentMenu = Intent(this, MenuID::class.java)
-            val bundle = Bundle()
-
-            bundle.putString("WARUNG_ID", warung.id)
-
-            intentMenu.putExtras(bundle)
-            startActivity(intentMenu)
-        }
-
         btnDelete.setOnClickListener {
             val dbHelper = DBHelper(this)
             dbHelper.hapusWarung(idWarung ?: "")
-            Toast.makeText(this@DetailWarung, "Delete successful", Toast.LENGTH_SHORT).show()
 
             val intent = Intent(applicationContext, ViewActivity::class.java)
             startActivity(intent)

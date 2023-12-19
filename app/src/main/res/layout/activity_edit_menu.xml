@@ -19,17 +19,11 @@
         android:layout_height="wrap_content"
         android:hint="Masukkan Harga" />
 
-    <ImageView
-        android:id="@+id/ivGambarMenu"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@drawable/placeholder_image" />
-
-    <Button
-        android:id="@+id/btnGambarMenu"
+    <EditText
+        android:id="@+id/etGambarMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pilih Gambar" />
+        android:hint="Masukkan Gambar" />
 
     <Spinner
         android:id="@+id/etKategoriMenu"

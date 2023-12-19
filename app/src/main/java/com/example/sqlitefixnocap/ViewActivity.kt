@@ -54,11 +54,6 @@ class ViewActivity : AppCompatActivity() {
                     startActivity(intent)
                     true
                 }
-                R.id.nav_meja -> {
-                    val intent = Intent(this, CreateMeja::class.java)
-                    startActivity(intent)
-                    true
-                }
                 else -> false
             }
         }
