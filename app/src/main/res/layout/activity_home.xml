@@ -86,7 +86,7 @@ s
             android:layout_marginStart="8dp"
             android:layout_toEndOf="@+id/previewLogo"
             android:layout_alignTop="@+id/previewLogo"
-            android:layout_below="@+id/textNamaWarung"
+            android:layout_below="@+id/previewNama"
             android:layout_marginTop="18dp"/>
 
     </RelativeLayout>

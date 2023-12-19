@@ -66,12 +66,12 @@ class EditWarungActivity : AppCompatActivity() {
 
         btnSaveEdit.setOnClickListener {
             val editedNama = etNamaWarung.text.toString()
+            val finalLogoUri = selectedLogoUri ?: logoWarung
+            val finalGambarUri = selectedGambarUri ?: gambarWarung
 
-            // Save the editedNama, selectedLogoUri, and selectedGambarUri to your database
-            // ...
 
             val dbHelper = DBHelper(this)
-            dbHelper.updateWarung(idWarung ?: "", editedNama, selectedLogoUri ?: "", selectedGambarUri ?: "")
+            dbHelper.updateWarung(idWarung ?: "", editedNama, finalLogoUri ?: "", finalGambarUri ?: "")
 
             val intent = Intent(applicationContext, ViewActivity::class.java)
             startActivity(intent)

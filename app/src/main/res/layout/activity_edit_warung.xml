@@ -5,31 +5,88 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="10dp"
     tools:context=".EditWarungActivity">
+
+    <TextView
+        android:id="@+id/judulHalaman"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Edit Warung"
+        android:textSize="25dp"
+        android:textAlignment="center"/>
 
     <EditText
         android:id="@+id/etNamaWarung"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Masukkan nama" />
+        android:layout_width="match_parent"
+        android:hint="Masukkan Nama Warung"
+        android:layout_height="45dp"
+        android:background="@drawable/outline_square_24"
+        android:drawableStart="@drawable/outline_store_mall_directory_24"
+        android:drawablePadding="10dp"
+        android:drawableTint="#98592A"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"/>
 
     <ImageView
-        android:id="@+id/ivLogoWarung"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@drawable/placeholder_image" />
+        android:id="@+id/ivGambarWarung"
+        android:layout_width="350dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/ic_launcher_foreground"
+        android:layout_centerHorizontal="true"
+        android:scaleType="centerCrop"
+        android:layout_below="@id/edNamaWarung"
+        android:adjustViewBounds="true"/>
+
+    <RelativeLayout
+        android:id="@+id/preview"
+        android:layout_width="350dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="13dp"
+        android:layout_below="@id/ivGambarWarung">
+        s
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivLogoWarung"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:src="@drawable/baseline_circle_24"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/transparent"/>
+
+        <TextView
+            android:id="@+id/previewNama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_marginStart="8dp"
+            android:textStyle="bold"
+            android:layout_toEndOf="@+id/ivLogoWarung"
+            android:layout_alignTop="@+id/ivLogoWarung"/>
+
+        <TextView
+            android:id="@+id/previewId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@+id/ivLogoWarung"
+            android:layout_alignTop="@+id/ivLogoWarung"
+            android:layout_below="@+id/previewNama"
+            android:layout_marginTop="18dp"/>
+
+    </RelativeLayout>
+
 
     <Button
         android:id="@+id/btnLogoWarung"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Pilih Logo" />
-
-    <ImageView
-        android:id="@+id/ivGambarWarung"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@drawable/placeholder_image" />
 
     <Button
         android:id="@+id/btnGambarWarung"
