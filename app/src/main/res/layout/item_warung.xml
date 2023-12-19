@@ -1,8 +1,7 @@
 <!-- item_warung.xml -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:padding="8dp">
 
     <ImageView
@@ -10,31 +9,47 @@
         android:layout_width="300dp"
         android:layout_height="200dp"
         android:src="@drawable/ic_launcher_foreground"
-        android:layout_gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
         android:scaleType="centerCrop"
         android:adjustViewBounds="true"/>
 
-    <ImageView
-        android:id="@+id/imageLogo"
+    <RelativeLayout
         android:layout_width="300dp"
-        android:layout_height="200dp"
-        android:src="@drawable/ic_launcher_foreground"
-        android:layout_gravity="center_horizontal"
-        android:scaleType="centerCrop"
-        android:adjustViewBounds="true"/>
+        android:layout_height="75dp"
+        android:layout_below="@id/imageGambar">
 
-    <TextView
-        android:id="@+id/textIdWarung"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:layout_marginTop="8dp"/>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageLogo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/baseline_circle_24"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/transparent"/>
 
-    <TextView
-        android:id="@+id/textNamaWarung"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:layout_marginTop="4dp"/>
-</LinearLayout>
+        <TextView
+            android:id="@+id/textNamaWarung"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_marginStart="8dp"
+            android:textStyle="bold"
+            android:layout_toEndOf="@+id/imageLogo"
+            android:layout_alignTop="@+id/imageLogo"/>
+
+        <TextView
+            android:id="@+id/textIdWarung"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@+id/imageLogo"
+            android:layout_alignTop="@+id/imageLogo"
+            android:layout_below="@+id/textNamaWarung"
+            android:layout_marginTop="18dp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
