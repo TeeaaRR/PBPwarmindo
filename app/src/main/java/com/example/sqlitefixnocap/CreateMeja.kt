@@ -23,11 +23,13 @@ class CreateMeja : AppCompatActivity() {
                 R.id.nav_warung -> {
                     val intent = Intent(this, ViewActivity::class.java)
                     startActivity(intent)
+                    overridePendingTransition(0, 0)
                     true
                 }
                 R.id.nav_menu -> {
                     val intent = Intent(this, ViewMenu::class.java)
                     startActivity(intent)
+                    overridePendingTransition(0, 0)
                     true
                 }
                 else -> false

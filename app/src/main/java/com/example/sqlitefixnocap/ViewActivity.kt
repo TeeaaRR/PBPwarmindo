@@ -52,11 +52,13 @@ class ViewActivity : AppCompatActivity() {
                 R.id.nav_menu -> {
                     val intent = Intent(this, ViewMenu::class.java)
                     startActivity(intent)
+                    overridePendingTransition(0, 0)
                     true
                 }
                 R.id.nav_meja -> {
                     val intent = Intent(this, CreateMeja::class.java)
                     startActivity(intent)
+                    overridePendingTransition(0, 0)
                     true
                 }
                 else -> false
