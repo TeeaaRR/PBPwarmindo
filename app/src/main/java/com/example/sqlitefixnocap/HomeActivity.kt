@@ -7,14 +7,20 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var textidwarung: EditText
     private lateinit var textnamawarung: EditText
-    private lateinit var textlogo: EditText
+    private lateinit var previewNama : TextView
+    private lateinit var previewId : TextView
     private lateinit var btnUploadImage: Button // Changed from EditText to Button
     private lateinit var btnUploadLogo: Button // Changed from EditText to Button
     private lateinit var tambahkan: Button
@@ -28,6 +34,8 @@ class HomeActivity : AppCompatActivity() {
 
         textidwarung = findViewById(R.id.edIdWarung)
         textnamawarung = findViewById(R.id.edNamaWarung)
+        previewNama = findViewById(R.id.previewNama)
+        previewId = findViewById(R.id.previewId)
         btnUploadLogo = findViewById(R.id.btnUploadLogo)
         btnUploadImage = findViewById(R.id.btnUploadImage) // Changed from EditText to Button
         tambahkan = findViewById(R.id.btnAdd)
@@ -67,6 +75,32 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(applicationContext, ViewActivity::class.java)
             startActivity(intent)
         }
+
+        textidwarung.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(charSequence: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+
+            override fun onTextChanged(charSequence: CharSequence?, start: Int, before: Int, count: Int) {
+                // Update the corresponding TextView in real-time
+                previewId.text = charSequence.toString()
+            }
+
+            override fun afterTextChanged(editable: Editable?) {
+            }
+        })
+
+        textnamawarung.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(charSequence: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+
+            override fun onTextChanged(charSequence: CharSequence?, start: Int, before: Int, count: Int) {
+                // Update the corresponding TextView in real-time
+                previewNama.text = charSequence.toString()
+            }
+
+            override fun afterTextChanged(editable: Editable?) {
+            }
+        })
     }
 
     var selectedImageUri: Uri? = null
@@ -93,14 +127,16 @@ class HomeActivity : AppCompatActivity() {
                 PICK_IMAGE_REQUEST -> {
                     // Ini untuk pemilihan gambar
                     selectedImageUri = data.data // Memperbarui variabel kelas dengan URI gambar yang dipilih
-                    // Lakukan sesuatu dengan selectedImageUri
-                    // Misalnya: tampilkan path atau nama gambar di TextView
+                    val previewGambar = findViewById<ImageView>(R.id.previewGambar)
+                    previewGambar.setImageURI(selectedImageUri)
+                    previewGambar.visibility = View.VISIBLE
                 }
                 PICK_LOGO_REQUEST -> {
                     // Ini untuk pemilihan logo
                     selectedLogoUri = data.data // Memperbarui variabel kelas dengan URI logo yang dipilih
-                    // Lakukan sesuatu dengan selectedLogoUri
-                    // Misalnya: tampilkan path atau nama logo di TextView
+                    val previewLogo = findViewById<ImageView>(R.id.previewLogo)
+                    previewLogo.setImageURI(selectedLogoUri)
+                    previewLogo.visibility = View.VISIBLE
                 }
                 else -> {
                     // Jika requestCode tidak sesuai dengan yang diharapkan
