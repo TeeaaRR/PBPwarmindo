@@ -14,23 +14,33 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Data Warung"
-        android:textSize="20dp"
+        android:text="Insert Warung"
+        android:textSize="25dp"
         android:textAlignment="center"/>
 
     <EditText
         android:id="@+id/edIdWarung"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:hint="Masukkan Id Warung"
-        android:layout_marginTop="50dp"/>
+        android:layout_height="45dp"
+        android:background="@drawable/outline_square_24"
+        android:drawableStart="@drawable/outline_store_mall_directory_24"
+        android:drawablePadding="10dp"
+        android:drawableTint="#98592A"
+        android:padding="10dp"
+        android:layout_marginTop="55dp"/>
 
     <EditText
         android:id="@+id/edNamaWarung"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:hint="Masukkan Nama Warung"
-        android:layout_marginTop="110dp"/>
+        android:layout_height="45dp"
+        android:background="@drawable/outline_square_24"
+        android:drawableStart="@drawable/outline_store_mall_directory_24"
+        android:drawablePadding="10dp"
+        android:drawableTint="#98592A"
+        android:padding="10dp"
+        android:layout_marginTop="120dp"/>
 
     <Button
         android:id="@+id/btnUploadLogo"
