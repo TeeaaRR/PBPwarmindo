@@ -35,8 +35,8 @@ class DetailMenu : AppCompatActivity() {
         val imageUrl = menu.gambarmenu
         Log.d("DetailMenu", "Image URL: $imageUrl")
 
-        idMenuTextView.text = "ID Warung: ${menu.idmenu}"
-        namaMenuTextView.text = "Nama Warung: ${menu.namamenu}"
+        idMenuTextView.text = "${menu.idmenu}"
+        namaMenuTextView.text = "${menu.namamenu}"
         // Set gambar/logo dari warung disini, misalnya menggunakan Picasso atau Glide
         // Contoh menggunakan Picasso:
         // Picasso.get().load(warung.logo).placeholder(R.drawable.default_logo).into(logoImageView)

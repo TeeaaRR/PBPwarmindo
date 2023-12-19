@@ -28,8 +28,8 @@ class DetailWarung : AppCompatActivity() {
         val imageUrl = warung.gambar
         Log.d("DetailWarung", "Image URL: $imageUrl")
 
-        idWarungTextView.text = "ID Warung: ${warung.id}"
-        namaWarungTextView.text = "Nama Warung: ${warung.nama}"
+        idWarungTextView.text = "${warung.id}"
+        namaWarungTextView.text = "${warung.nama}"
 
         if (!updatedLogo.isNullOrBlank()) {
             Glide.with(this)

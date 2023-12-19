@@ -3,50 +3,62 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@drawable/dialog_background">
 
     <TextView
         android:id="@+id/textDetailIdMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ID Menu:"
         android:textStyle="bold"
-        android:textSize="16sp" />
+        android:textSize="18sp"
+        android:textColor="#000000"
+        android:layout_gravity="center"
+        android:textAllCaps="true"/>
 
     <TextView
         android:id="@+id/textDetailNamaMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nama Menu:"
-        android:textSize="14sp"
-        android:layout_marginTop="8dp"/>
+        android:textSize="16sp"
+        android:layout_marginTop="8dp"
+        android:textColor="#333333"
+        android:layout_gravity="center"/>
 
     <ImageView
         android:id="@+id/imageLogo"
-        android:layout_width="600dp"
-        android:layout_height="400dp"
-        android:layout_gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_launcher_foreground" />
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="16dp">
+
         <Button
             android:id="@+id/btnEdit"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:text="Edit"/>
+            android:layout_marginEnd="8dp"
+            android:text="Edit"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/button_edit_shape" />
 
         <Button
             android:id="@+id/btnDelete"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Delete"/>
+            android:text="Delete"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/button_delete_shape" />
     </LinearLayout>
     <!-- Tambahkan elemen lain untuk menampilkan detail warung sesuai kebutuhan Anda -->
 
