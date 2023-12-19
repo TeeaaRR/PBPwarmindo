@@ -15,6 +15,12 @@
         android:theme="@style/Theme.SQLiteFixNoCap"
         tools:targetApi="31">
         <activity
+            android:name=".CreateMeja"
+            android:exported="false" />
+        <activity
+            android:name=".MenuID"
+            android:exported="false" />
+        <activity
             android:name=".Navigation"
             android:exported="false" />
         <activity

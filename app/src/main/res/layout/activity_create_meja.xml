@@ -5,43 +5,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".EditMenu">
+    tools:context=".CreateMeja">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tambahkan Meja"/>
 
     <EditText
-        android:id="@+id/etNamaMenu"
+        android:id="@+id/edIdMeja"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Masukkan nama" />
-
-    <EditText
-        android:id="@+id/etHargaMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Masukkan Harga" />
-
-    <ImageView
-        android:id="@+id/ivGambarMenu"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@drawable/placeholder_image" />
-
-    <Button
-        android:id="@+id/btnGambarMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pilih Gambar" />
+        android:hint="Masukkan Id Meja"/>
 
     <Spinner
-        android:id="@+id/etKategoriMenu"
+        android:id="@+id/idWarungMeja"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:entries="@array/options_array"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"/>
 
     <Button
-        android:id="@+id/saveEdit"
+        android:id="@+id/btnTambahMeja"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save Edit"/>
+        android:text="Tambah"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottomNavigationView"
+        android:layout_alignParentBottom="true"
+        android:elevation="2dp"
+        app:menu="@menu/bottom_navigation"
+        app:itemIconSize="30dp"
+        />
 </LinearLayout>

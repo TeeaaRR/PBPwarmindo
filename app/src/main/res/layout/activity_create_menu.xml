@@ -36,11 +36,11 @@
         android:hint="Masukkan Harga Menu"
         android:padding="12dp"/>
 
-    <EditText
-        android:id="@+id/gambarMenu"
+    <Button
+        android:id="@+id/btnUploadImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Masukkan Gambar Menu"
+        android:hint="Upload Gambar"
         android:padding="12dp"/>
 
     <Spinner
@@ -48,6 +48,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:entries="@array/options_array"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"/>
+
+    <Spinner
+        android:id="@+id/idWarungMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"/>
 

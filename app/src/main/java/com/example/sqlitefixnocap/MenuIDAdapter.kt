@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 
-class MenuAdapter(private val context: Context, private val menuList: List<DBHelper.Menu>) :
-    RecyclerView.Adapter<MenuAdapter.MenuViewHolder>() {
+class MenuIDAdapter(private val context: Context, private val menuList: List<DBHelper.Menu>) :
+    RecyclerView.Adapter<MenuIDAdapter.MenuViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_menu, parent, false)
