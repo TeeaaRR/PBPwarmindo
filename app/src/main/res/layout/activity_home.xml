@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
     tools:context=".HomeActivity">
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
 
     <TextView
         android:layout_width="match_parent"
@@ -40,26 +44,49 @@
         android:id="@+id/btnUploadImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/previewLogo"
+        android:layout_marginTop="2dp"
         android:text="Upload Image"
-        android:textAllCaps="false"
-        android:layout_marginTop="230dp"/>
+        android:textAllCaps="false" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/previewLogo"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_below="@+id/btnUploadLogo"
+        android:layout_gravity="center_horizontal"
+        android:scaleType="centerCrop"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/previewGambar"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_below="@+id/btnUploadImage"
+        android:layout_gravity="center_horizontal"
+        android:scaleType="centerCrop"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"/>
 
     <Button
         android:id="@+id/btnAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/previewGambar"
+        android:layout_marginTop="2dp"
+        android:gravity="center"
         android:text="Tambahkan"
-        android:textAllCaps="false"
-        android:layout_marginTop="290dp"
-        android:gravity="center"/>
+        android:textAllCaps="false" />
 
     <Button
         android:id="@+id/btnView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/btnAdd"
+        android:layout_marginTop="2dp"
+        android:gravity="center"
         android:text="Lihat Data"
-        android:textAllCaps="false"
-        android:layout_marginTop="350dp"
-        android:gravity="center"/>
-
-</RelativeLayout>
+        android:textAllCaps="false" />
+    </RelativeLayout>
+</ScrollView>
