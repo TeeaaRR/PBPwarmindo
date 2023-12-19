@@ -26,7 +26,7 @@
         android:layout_gravity="center"/>
 
     <ImageView
-        android:id="@+id/imageLogo"
+        android:id="@+id/GambarWarung"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:src="@drawable/ic_launcher_foreground"

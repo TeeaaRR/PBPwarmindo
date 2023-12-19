@@ -24,25 +24,17 @@ class DetailWarung : AppCompatActivity() {
 
         val idWarungTextView: TextView = findViewById(R.id.textDetailIdWarung)
         val namaWarungTextView: TextView = findViewById(R.id.textDetailNamaWarung)
-        val imageDetailLogo: ImageView = findViewById(R.id.imageLogo)
+        val imageDetailLogo: ImageView = findViewById(R.id.GambarWarung)
         val imageUrl = warung.gambar
         Log.d("DetailWarung", "Image URL: $imageUrl")
 
         idWarungTextView.text = "${warung.id}"
         namaWarungTextView.text = "${warung.nama}"
 
-        if (!updatedLogo.isNullOrBlank()) {
-            Glide.with(this)
-                .load(updatedLogo)
-                .placeholder(R.drawable.placeholder_image)
-                .into(imageDetailLogo)
-        } else {
-            // Load a default image or handle the case where the URL is empty
             Glide.with(this)
                 .load(warung.gambar)
                 .placeholder(R.drawable.placeholder_image)
                 .into(imageDetailLogo)
-        }
 
         btnEdit.setOnClickListener {
             val intent = Intent(applicationContext, EditWarungActivity::class.java)
