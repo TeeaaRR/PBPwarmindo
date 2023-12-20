@@ -4,11 +4,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.google.android.material.bottomnavigation.BottomNavigationView
+
 class DetailWarung : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,8 +19,6 @@ class DetailWarung : AppCompatActivity() {
         setContentView(R.layout.activity_detail_warung)
         val btnEdit = findViewById<Button>(R.id.btnEdit)
         val btnDelete = findViewById<Button>(R.id.btnDelete)
-        val btnMenu = findViewById<Button>(R.id.btnMenu)
-        val btnMeja = findViewById<Button>(R.id.btnMeja)
         val updatedLogo: String? = intent?.getStringExtra("WARUNG_LOGO") // Use "WARUNG_LOGO" here
         val idWarung: String? = intent.getStringExtra("WARUNG_ID")
         val dbHelper = DBHelper(this)
@@ -49,26 +50,6 @@ class DetailWarung : AppCompatActivity() {
             startActivity(intent)
         }
 
-        btnMenu.setOnClickListener {
-            val intentMenu = Intent(this, MenuID::class.java)
-            val bundle = Bundle()
-
-            bundle.putString("WARUNG_ID", warung.id)
-
-            intentMenu.putExtras(bundle)
-            startActivity(intentMenu)
-        }
-
-        btnMeja.setOnClickListener {
-            val intentMeja = Intent(this, MejaWarung::class.java)
-            val bundle = Bundle()
-
-            bundle.putString("WARUNG_ID", warung.id)
-
-            intentMeja.putExtras(bundle)
-            startActivity(intentMeja)
-        }
-
         btnDelete.setOnClickListener {
             val dbHelper = DBHelper(this)
             dbHelper.hapusWarung(idWarung ?: "")
@@ -77,6 +58,56 @@ class DetailWarung : AppCompatActivity() {
             val intent = Intent(applicationContext, ViewActivity::class.java)
             startActivity(intent)
             finish() // Close the DetailWarung activity after deleting data
+        }
+
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+        }
+
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView2)
+        bottomNavigationView.setSelectedItemId(R.id.nav_detail)
+
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId){
+                R.id.nav_detail -> {
+                    true
+                }
+                R.id.nav_menu -> {
+                    val intent = Intent(this, MenuID::class.java)
+                    val bundle = Bundle()
+
+                    bundle.putString("WARUNG_ID", warung.id)
+
+                    intent.putExtras(bundle)
+                    startActivity(intent)
+                    overridePendingTransition(0, 0)
+                    true
+                }
+                R.id.nav_meja -> {
+                    val intent = Intent(this, MejaWarung::class.java)
+                    val bundle = Bundle()
+
+                    bundle.putString("WARUNG_ID", warung.id)
+
+                    intent.putExtras(bundle)
+                    startActivity(intent)
+                    overridePendingTransition(0, 0)
+                    true
+                }
+                else -> false
+            }
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                // Handle the back button click
+                val intent = Intent(this, ViewActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }

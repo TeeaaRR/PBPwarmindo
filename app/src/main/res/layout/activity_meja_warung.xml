@@ -9,5 +9,14 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottomNavigationView2"/>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/bottomNavigationView2"
+            android:layout_alignParentBottom="true"
+            android:elevation="2dp"
+            app:menu="@menu/navigation_detail"/>
 </RelativeLayout>

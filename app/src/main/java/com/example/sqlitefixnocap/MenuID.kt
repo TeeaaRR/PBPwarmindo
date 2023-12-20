@@ -1,9 +1,12 @@
 package com.example.sqlitefixnocap
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MenuID : AppCompatActivity() {
 
@@ -14,9 +17,11 @@ class MenuID : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu_id)
 
+
         recyclerView = findViewById(R.id.recyclerView)
         dbHelper = DBHelper(this)
         val idWarung: String? = intent.getStringExtra("WARUNG_ID")
+        val warung: DBHelper.Warung = dbHelper.cariWarung(idWarung)
 
         val menuList: List<DBHelper.Menu> = dbHelper.getMenuByWarungID(idWarung ?: "")
 
@@ -28,5 +33,59 @@ class MenuID : AppCompatActivity() {
 
         // Set adapter ke RecyclerView
         recyclerView.adapter = adapter
+
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+        }
+
+
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView2)
+        bottomNavigationView.setSelectedItemId(R.id.nav_menu)
+
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId){
+                R.id.nav_menu -> {
+                    true
+                }
+                R.id.nav_detail -> {
+                    val intent = Intent(this, DetailWarung::class.java)
+                    val bundle = Bundle()
+
+                    bundle.putString("WARUNG_ID", warung.id)
+                    bundle.putString("WARUNG_NAMA", warung.nama)
+                    bundle.putString("WARUNG_LOGO", warung.logo) // Use "WARUNG_LOGO" here
+                    bundle.putString("WARUNG_GAMBAR", warung.gambar)
+
+                    intent.putExtras(bundle)
+                    startActivity(intent)
+                    overridePendingTransition(0, 0)
+                    true
+                }
+                R.id.nav_meja -> {
+                    val intent = Intent(this, MejaWarung::class.java)
+                    val bundle = Bundle()
+
+                    bundle.putString("WARUNG_ID", warung.id)
+
+                    intent.putExtras(bundle)
+                    startActivity(intent)
+                    overridePendingTransition(0, 0)
+                    true
+                }
+                else -> false
+            }
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                // Handle the back button click
+                val intent = Intent(this, ViewActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }
