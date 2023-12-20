@@ -2,12 +2,9 @@ package com.example.sqlitefixnocap
 
 import android.content.ContentValues
 import android.content.Context
-import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
-import org.w3c.dom.Text
-import kotlin.math.log
 
 class DBHelper(context: Context) :
     SQLiteOpenHelper(context, DBNAME, null, 1) {
@@ -352,5 +349,9 @@ class DBHelper(context: Context) :
         cursor.close()
         return mejaList
     }
+    fun hapusMeja(id: String) {
+        val db = this.writableDatabase
 
+        db.delete("meja", "kodemeja = ?", arrayOf(id))
+    }
 }

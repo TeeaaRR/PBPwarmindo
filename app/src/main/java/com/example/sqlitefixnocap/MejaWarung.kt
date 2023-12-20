@@ -4,8 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MejaWarung : AppCompatActivity() {
 
@@ -26,7 +24,7 @@ class MejaWarung : AppCompatActivity() {
         val adapter = MejaAdapter(this, mejaList)
 
         // Atur layout manager untuk RecyclerView menjadi GridLayoutManager dengan 2 kolom
-        recyclerView.layoutManager = GridLayoutManager(this, 1)
+        recyclerView.layoutManager = GridLayoutManager(this, 4)
 
         // Set adapter ke RecyclerView
         recyclerView.adapter = adapter

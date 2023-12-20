@@ -38,7 +38,7 @@ class CreateMeja : AppCompatActivity() {
                 val insert = DB.insertMeja(kodemeja, idwarungmeja)
                 if (insert) {
                     Toast.makeText(this@CreateMeja, "Create Meja successfully", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(applicationContext, ViewActivity::class.java)
+                    val intent = Intent(applicationContext, CreateMeja::class.java)
                     startActivity(intent)
                 } else {
                     Toast.makeText(this@CreateMeja, "Create Meja failed", Toast.LENGTH_SHORT).show()

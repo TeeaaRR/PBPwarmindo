@@ -1,22 +1,28 @@
 <!-- item_warung.xml -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="8dp">
+    android:padding="2dp">
+
+    <ImageView
+        android:id="@+id/meja"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/baseline_square_24_green"
+        />
 
     <TextView
         android:id="@+id/textKodeMeja"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/meja"
+        android:layout_marginTop="-80dp"
+        android:textSize="25dp"
+        android:textColor="@color/white"
+        android:layout_centerInParent="true"
         android:text="Kode Meja" />
 
-    <TextView
-        android:id="@+id/textStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:text="Status"
-        android:layout_marginTop="4dp"/>
 
-</LinearLayout>
+</RelativeLayout>
