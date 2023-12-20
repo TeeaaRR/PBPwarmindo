@@ -125,7 +125,7 @@ s
         android:id="@+id/btnView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Kembali"
+        android:text="Batalkan"
         android:textAllCaps="false"
         android:layout_marginTop="10dp"
         android:layout_below="@id/btnAdd"

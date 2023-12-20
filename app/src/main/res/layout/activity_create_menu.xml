@@ -1,67 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:padding="10dp"
     tools:context=".CreateMenu">
 
     <TextView
+        android:id="@+id/textCreate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Data Menu"
-        android:textSize="20dp"
+        android:textSize="25dp"
         android:textAlignment="center"/>
 
     <EditText
         android:id="@+id/edIdMenu"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:hint="Masukkan Id Menu"
-        android:padding="12dp"/>
-    <!-- Menambahkan padding pada EditText -->
+        android:layout_height="45dp"
+        android:layout_below="@id/textCreate"
+        android:background="@drawable/outline_square_24"
+        android:drawableStart="@drawable/outline_store_mall_directory_24"
+        android:drawablePadding="10dp"
+        android:drawableTint="#98592A"
+        android:padding="10dp"
+        android:layout_marginTop="40dp"/>
 
     <EditText
         android:id="@+id/edNamaMenu"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:hint="Masukkan Nama Menu"
-        android:padding="12dp"/>
+        android:layout_height="45dp"
+        android:layout_below="@id/edIdMenu"
+        android:background="@drawable/outline_square_24"
+        android:drawableStart="@drawable/outline_store_mall_directory_24"
+        android:drawablePadding="10dp"
+        android:drawableTint="#98592A"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"/>
 
     <EditText
         android:id="@+id/hargaMenu"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Masukkan Harga Menu"
-        android:padding="12dp"/>
+        android:hint="Masukkan Harga"
+        android:layout_height="45dp"
+        android:layout_below="@id/edNamaMenu"
+        android:background="@drawable/outline_square_24"
+        android:drawableStart="@drawable/outline_store_mall_directory_24"
+        android:drawablePadding="10dp"
+        android:drawableTint="#98592A"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"/>
+
+    <ImageView
+        android:id="@+id/previewGambar"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:layout_below="@id/hargaMenu"
+        android:src="@drawable/ic_launcher_foreground"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="25dp"
+        android:adjustViewBounds="true"/>
 
     <Button
         android:id="@+id/btnUploadImage"
-        android:layout_width="match_parent"
+        android:layout_width="175dp"
         android:layout_height="wrap_content"
-        android:hint="Upload Gambar"
-        android:padding="12dp"/>
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/idWarungMenu"
+        android:text="Upload Gambar"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/labelKategori"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:labelFor="@id/kategoriMenu"
+        android:layout_below="@id/hargaMenu"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="25dp"
+        android:text="Kategori Menu"/>
 
     <Spinner
         android:id="@+id/kategoriMenu"
-        android:layout_width="match_parent"
+        android:layout_width="175dp"
         android:layout_height="wrap_content"
         android:entries="@array/options_array"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"/>
+        android:layout_below="@id/labelKategori"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:id="@+id/labelWarung"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:labelFor="@id/idWarungMenu"
+        android:layout_below="@id/kategoriMenu"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="25dp"
+        android:text="Pilih Warung"/>
 
     <Spinner
         android:id="@+id/idWarungMenu"
-        android:layout_width="match_parent"
+        android:layout_width="175dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginTop="5dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/labelWarung"/>
 
     <Button
         android:id="@+id/btnAddMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/previewGambar"
+        android:layout_marginTop="25dp"
         android:text="Tambahkan"/>
 
-</LinearLayout>
+</RelativeLayout>

@@ -21,7 +21,7 @@ class DBHelper(context: Context) :
         MyDB.execSQL("create Table users(username TEXT primary key, password TEXT)")
         MyDB.execSQL("create Table warung(idwarung TEXT primary key, namawarung TEXT, logo TEXT, gambar TEXT)")
         MyDB.execSQL("create Table menu(idmenu TEXT primary key, namamenu TEXT, hargamenu TEXT, gambarmenu TEXT, kategorimenu TEXT, idwarung TEXT, foreign key (idwarung) references warung(idwarung))")
-        MyDB.execSQL("create Table meja(kodemeja TEXT primary key, idwarung TEXT, status TEXT, foreign key (idwarung) references warung(idwarung))")
+        MyDB.execSQL("create Table meja(kodemeja TEXT, idwarung TEXT, status TEXT, foreign key (idwarung) references warung(idwarung))")
         MyDB.execSQL("create Table transaksi(idtransaksi TEXT primary key, tanggal TEXT, waktu TEXT, shift TEXT, idpengguna TEXT, idpelanggan TEXT, status TEXT, kodemeja TEXT, namapelanggan TEXT, total TEXT, metodepembayaran TEXT, totaldiskon TEXT, idpromosi TEXT, foreign key (kodemeja) references meja(kodemeja))")
     }
 

@@ -6,9 +6,11 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.Toast
 
@@ -75,10 +77,10 @@ class CreateMenu : AppCompatActivity() {
         if (resultCode == Activity.RESULT_OK && data != null) {
             when (requestCode) {
                 PICK_IMAGE_REQUEST -> {
-                    // Ini untuk pemilihan gambar
-                    selectedImageUri = data.data // Memperbarui variabel kelas dengan URI gambar yang dipilih
-                    // Lakukan sesuatu dengan selectedImageUri
-                    // Misalnya: tampilkan path atau nama gambar di TextView
+                    selectedImageUri = data.data
+                    val previewGambar = findViewById<ImageView>(R.id.previewGambar)
+                    previewGambar.setImageURI(selectedImageUri)
+                    previewGambar.visibility = View.VISIBLE
                 }
                 else -> {
                     // Jika requestCode tidak sesuai dengan yang diharapkan
