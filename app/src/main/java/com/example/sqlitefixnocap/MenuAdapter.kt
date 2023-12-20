@@ -45,12 +45,12 @@ class MenuAdapter(private val context: Context, private val menuList: List<DBHel
     }
 
     inner class MenuViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val idMenuTextView: TextView = itemView.findViewById(R.id.textIdMenu)
         private val namaMenuTextView: TextView = itemView.findViewById(R.id.textNamaMenu)
+        private val hargaMenuTextView: TextView = itemView.findViewById(R.id.hargaMenu)
         private val logoImageView: ImageView = itemView.findViewById(R.id.imageLogo)
 
         fun bind(menu: DBHelper.Menu) {
-            idMenuTextView.text = menu.idmenu.toString()
+            hargaMenuTextView.text = menu.hargamenu.toString()
             namaMenuTextView.text = menu.namamenu
 
             Glide.with(context)

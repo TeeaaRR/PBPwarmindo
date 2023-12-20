@@ -5,9 +5,12 @@ package com.example.sqlitefixnocap
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
@@ -17,6 +20,8 @@ class EditWarungActivity : AppCompatActivity() {
     private lateinit var etNamaWarung: EditText
     private lateinit var ivLogoWarung: ImageView
     private lateinit var ivGambarWarung: ImageView
+    private lateinit var previewNama : TextView
+    private lateinit var previewId : TextView
     private lateinit var btnPilihLogo: Button
     private lateinit var btnPilihGambar: Button
     private lateinit var btnSaveEdit: Button
@@ -34,6 +39,8 @@ class EditWarungActivity : AppCompatActivity() {
         etNamaWarung = findViewById(R.id.etNamaWarung)
         ivLogoWarung = findViewById(R.id.ivLogoWarung)
         ivGambarWarung = findViewById(R.id.ivGambarWarung)
+        previewNama = findViewById(R.id.previewNama)
+        previewId = findViewById(R.id.previewId)
         btnPilihLogo = findViewById(R.id.btnLogoWarung)
         btnPilihGambar = findViewById(R.id.btnGambarWarung)
         btnSaveEdit = findViewById(R.id.saveEdit)
@@ -43,6 +50,8 @@ class EditWarungActivity : AppCompatActivity() {
         val logoWarung: String? = intent.getStringExtra("WARUNG_LOGO")
         val gambarWarung: String? = intent.getStringExtra("WARUNG_GAMBAR")
 
+        previewNama.text = "${namaWarung}"
+        previewId.text = "${idWarung}"
         etNamaWarung.setText(namaWarung)
 
         // Load existing logo and gambar using Glide

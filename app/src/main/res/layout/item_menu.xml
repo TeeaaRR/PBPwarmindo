@@ -15,7 +15,7 @@
         android:adjustViewBounds="true"/>
 
     <TextView
-        android:id="@+id/textIdMenu"
+        android:id="@+id/textNamaMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16sp"
@@ -23,7 +23,7 @@
         android:layout_marginTop="8dp"/>
 
     <TextView
-        android:id="@+id/textNamaMenu"
+        android:id="@+id/hargaMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="14sp"
