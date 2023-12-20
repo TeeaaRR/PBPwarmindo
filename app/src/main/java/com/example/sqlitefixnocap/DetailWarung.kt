@@ -32,10 +32,10 @@ class DetailWarung : AppCompatActivity() {
         idWarungTextView.text = "${warung.id}"
         namaWarungTextView.text = "${warung.nama}"
 
-            Glide.with(this)
-                .load(warung.gambar)
-                .placeholder(R.drawable.placeholder_image)
-                .into(imageDetailLogo)
+        Glide.with(this)
+            .load(warung.gambar)
+            .placeholder(R.drawable.placeholder_image)
+            .into(imageDetailLogo)
 
         btnEdit.setOnClickListener {
             val intent = Intent(applicationContext, EditWarungActivity::class.java)
