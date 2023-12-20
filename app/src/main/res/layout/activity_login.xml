@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/relativeLayout"
@@ -13,45 +13,53 @@
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="111dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.146"
-        app:srcCompat="@drawable/logopbp"
-        tools:layout_editor_absoluteX="0dp" />
+        android:layout_marginTop="90dp"
+        app:srcCompat="@drawable/logopbp"/>
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="85dp"
+        android:layout_below="@id/imageView"
+        android:layout_marginTop="60dp"
         android:text="Selamat Datang!"
         android:textColor="#98592A"
-        android:textSize="24sp"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        tools:layout_editor_absoluteX="16dp" />
+        android:textSize="24sp" />
 
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="126dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="7dp"
-        android:text="Remember me"
-        app:layout_constraintTop_toBottomOf="@+id/password1"
-        tools:layout_editor_absoluteX="-1dp" />
+    <EditText
+        android:id="@+id/username1"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/textView2"
+        android:background="@drawable/outline_square_24"
+        android:drawableStart="@drawable/baseline_person_outline_24"
+        android:drawablePadding="10dp"
+        android:drawableTint="#98592A"
+        android:inputType="textPersonName"
+        android:hint="Username"
+        android:padding="10dp"/>
 
-    <TextView
-        android:id="@+id/regis"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Belum punya akun? Regitrasi disini"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnsignin1" />
+    <EditText
+        android:id="@+id/password1"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/username1"
+        android:background="@drawable/outline_square_24"
+        android:drawableStart="@drawable/outline_lock_24"
+        android:drawableTint="#98592A"
+        android:drawablePadding="10dp"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="10dp"/>
 
     <Button
         android:id="@+id/btnsignin1"
         android:layout_width="358dp"
         android:layout_height="59dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="40dp"
+        android:layout_below="@id/password1"
         android:backgroundTint="#98592A"
         android:text="Sign in"
         app:cornerRadius="30dp"
@@ -60,37 +68,10 @@
         app:strokeColor="#E5B07E"
         app:strokeWidth="2dp" />
 
-    <EditText
-        android:id="@+id/username1"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="26dp"
-        android:background="@drawable/outline_square_24"
-        android:drawableStart="@drawable/baseline_person_outline_24"
-        android:drawablePadding="10dp"
-        android:drawableTint="#98592A"
-        android:inputType="textPersonName"
-        android:hint="Username"
-        android:padding="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <EditText
-        android:id="@+id/password1"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/outline_square_24"
-        android:drawableStart="@drawable/outline_lock_24"
-        android:drawableTint="#98592A"
-        android:drawablePadding="10dp"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:padding="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username1" />
-
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/regis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Belum punya akun? Regitrasi disini"
+        android:layout_below="@id/btnsignin1"/>
+</RelativeLayout>
