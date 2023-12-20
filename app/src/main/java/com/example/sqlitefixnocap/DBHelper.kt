@@ -261,7 +261,7 @@ class DBHelper(context: Context) :
         return menu
     }
 
-    fun updateMenu(idmenu: String, namamenu: String, hargamenu: String, gambarmenu: String, kategorimenu: String) {
+    fun updateMenu(idmenu: String, namamenu: String, hargamenu: String, gambarmenu: String, kategorimenu: String, idwarung: String) {
         val db = this.writableDatabase
         val contentValues = ContentValues()
 
@@ -269,6 +269,7 @@ class DBHelper(context: Context) :
         contentValues.put("hargamenu", hargamenu)
         contentValues.put("gambarmenu", gambarmenu)
         contentValues.put("kategorimenu", kategorimenu)
+        contentValues.put("idwarung", idwarung)
 
         // Update data berdasarkan ID
         db.update("menu", contentValues, "idmenu = ?", arrayOf(idmenu))
