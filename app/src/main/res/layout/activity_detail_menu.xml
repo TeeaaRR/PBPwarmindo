@@ -35,6 +35,16 @@
         android:scaleType="centerCrop"
         android:src="@drawable/ic_launcher_foreground" />
 
+    <TextView
+        android:id="@+id/textDetailHarga"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"
+        android:textColor="#333333"
+        android:layout_gravity="center"
+        android:textStyle="bold"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

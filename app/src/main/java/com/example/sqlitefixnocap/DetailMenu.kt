@@ -7,9 +7,12 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import java.text.NumberFormat
+import java.util.Locale
 
 // DetailWarungActivity
 // DetailWarungActivity
@@ -32,11 +35,21 @@ class DetailMenu : AppCompatActivity() {
         val idMenuTextView: TextView = findViewById(R.id.textDetailIdMenu)
         val namaMenuTextView: TextView = findViewById(R.id.textDetailNamaMenu)
         val imageDetailLogo: ImageView = findViewById(R.id.imageLogo)
+        val hargamenu: TextView = findViewById(R.id.textDetailHarga)
         val imageUrl = menu.gambarmenu
         Log.d("DetailMenu", "Image URL: $imageUrl")
 
         idMenuTextView.text = "${menu.idmenu}"
         namaMenuTextView.text = "${menu.namamenu}"
+        hargamenu.text = "RP.${menu.hargamenu}"
+        // Ganti dengan nilai harga yang sesuai
+        val hargaString = hargamenu.text.toString().removePrefix("RP.")
+// Konversi nilai harga menjadi tipe data numerik
+        val harga = hargaString.toDoubleOrNull() ?: 0.0
+        val numberFormat = NumberFormat.getNumberInstance(Locale.getDefault())
+        numberFormat.maximumFractionDigits = 3
+        val formattedHarga = numberFormat.format(harga)
+        hargamenu.text = "RP.$formattedHarga"
         // Set gambar/logo dari warung disini, misalnya menggunakan Picasso atau Glide
         // Contoh menggunakan Picasso:
         // Picasso.get().load(warung.logo).placeholder(R.drawable.default_logo).into(logoImageView)
