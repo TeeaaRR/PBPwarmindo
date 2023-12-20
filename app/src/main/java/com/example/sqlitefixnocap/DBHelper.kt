@@ -18,7 +18,7 @@ class DBHelper(context: Context) :
 
     override fun onCreate(MyDB: SQLiteDatabase) {
         MyDB.execSQL("PRAGMA foreign_keys = ON;")
-        MyDB.execSQL("create Table users(username TEXT primary key, password TEXT)")
+        MyDB.execSQL("create Table users(username TEXT primary key, password TEXT, role TEXT)")
         MyDB.execSQL("create Table warung(idwarung TEXT primary key, namawarung TEXT, logo TEXT, gambar TEXT)")
         MyDB.execSQL("create Table menu(idmenu TEXT primary key, namamenu TEXT, hargamenu TEXT, gambarmenu TEXT, kategorimenu TEXT, idwarung TEXT, foreign key (idwarung) references warung(idwarung))")
         MyDB.execSQL("create Table meja(kodemeja TEXT, idwarung TEXT, status TEXT, foreign key (idwarung) references warung(idwarung))")
@@ -29,11 +29,12 @@ class DBHelper(context: Context) :
         MyDB.execSQL("drop Table if exists users")
     }
 
-    fun insertData(username: String, password: String): Boolean {
+    fun insertData(username: String, password: String, role: String): Boolean {
         val MyDB = this.writableDatabase
         val contentValues = ContentValues()
         contentValues.put("username", username)
         contentValues.put("password", password)
+        contentValues.put("role", role)
         val result = MyDB.insert("users", null, contentValues)
         return result != -1L
     }
@@ -84,11 +85,41 @@ class DBHelper(context: Context) :
 //        return cursor.count > 0
 //    }
 
-    fun checkUsernamePassword(username: String, password: String): Boolean {
-        val MyDB = this.writableDatabase
-        val cursor =
-            MyDB.rawQuery("Select * from users where username = ? and password = ?", arrayOf(username, password))
-        return cursor.count > 0
+//    fun checkUsernamePassword(username: String, password: String): Boolean {
+//        val MyDB = this.writableDatabase
+//        val cursor =
+//            MyDB.rawQuery("Select * from users where username = ? and password = ?", arrayOf(username, password))
+//        return cursor.count > 0
+//    }
+
+    data class UserData(
+        val username: String,
+        val password: String,
+        val role: String
+        // ... (tambahkan properti lain jika diperlukan)
+    )
+
+    fun checkUsernamePassword(username: String, password: String): UserData? {
+        val db = this.readableDatabase
+        var userData: UserData? = null
+
+        val query = "SELECT * FROM users WHERE username = ? AND password = ?"
+        val cursor = db.rawQuery(query, arrayOf(username, password))
+
+        if (cursor.moveToFirst()) {
+            // Jika data ditemukan, Anda dapat memuatnya ke objek UserData
+            userData = UserData(
+                cursor.getString(cursor.getColumnIndex("username")),
+                cursor.getString(cursor.getColumnIndex("password")),
+                cursor.getString(cursor.getColumnIndex("role"))
+                // ... (tambahkan kolom lain jika ada)
+            )
+        }
+
+        cursor.close()
+        db.close()
+
+        return userData
     }
 
     data class Warung(
