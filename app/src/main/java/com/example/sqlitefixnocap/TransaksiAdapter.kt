@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class TransaksiAdapter(private val context: Context, private val transaksiList: List<DBHelper.Transaksi>) :
+class TransaksiAdapter(private val context: Context, private val transaksiList: ArrayList<DBHelper.Transaksi>) :
     RecyclerView.Adapter<TransaksiAdapter.TransaksiViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TransaksiViewHolder {
@@ -21,15 +21,6 @@ class TransaksiAdapter(private val context: Context, private val transaksiList: 
         val transaksi = transaksiList[position]
         holder.bind(transaksi)
 
-        holder.itemView.setOnClickListener {
-            val intent = Intent(context, TransaksiActivity::class.java)
-            val bundle = Bundle()
-
-            bundle.putString("TRANSAKSI_ID", transaksi.idtransaksi)
-
-            intent.putExtras(bundle)
-            context.startActivity(intent)
-        }
     }
 
     override fun getItemCount(): Int {
@@ -40,13 +31,13 @@ class TransaksiAdapter(private val context: Context, private val transaksiList: 
         private val idTransaksiTextView: TextView = itemView.findViewById(R.id.textIdTransaksi)
         private val namaPelangganTextView: TextView = itemView.findViewById(R.id.textNamaPelanggan)
         private val tanggalTextView: TextView = itemView.findViewById(R.id.textTanggal)
-        private val hargaTextView: TextView = itemView.findViewById(R.id.textHarga)
+        private val totalTextView: TextView = itemView.findViewById(R.id.textTotal)
 
         fun bind(transaksi: DBHelper.Transaksi) {
             idTransaksiTextView.text = transaksi.idtransaksi.toString()
             namaPelangganTextView.text = transaksi.namapelanggan
             tanggalTextView.text = transaksi.tanggal
-            hargaTextView.text = transaksi.harga
+            totalTextView.text = transaksi.total
         }
     }
 }

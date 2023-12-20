@@ -14,7 +14,6 @@ class TransaksiActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var dbHelper: DBHelper
 
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transaksi)
@@ -22,7 +21,7 @@ class TransaksiActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerView)
         dbHelper = DBHelper(this)
 
-        val transaksiList: List<DBHelper.Transaksi> = dbHelper.getAllTransaksi()
+        val transaksiList: ArrayList<DBHelper.Transaksi> = dbHelper.getAllTransaksi()
 
         // Inisialisasi adapter untuk RecyclerView
         val adapter = TransaksiAdapter(this, transaksiList)
