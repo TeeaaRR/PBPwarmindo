@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MejaWarung : AppCompatActivity() {
 
@@ -21,7 +22,7 @@ class MejaWarung : AppCompatActivity() {
         dbHelper = DBHelper(this)
         val idWarung: String? = intent.getStringExtra("WARUNG_ID")
         val warung: DBHelper.Warung = dbHelper.cariWarung(idWarung)
-
+        val btnCreateMeja = findViewById<FloatingActionButton>(R.id.btnCreateMeja)
         val mejaList: List<DBHelper.Meja> = dbHelper.getMejaByWarungID(idWarung ?: "")
 
         // Inisialisasi adapter untuk RecyclerView
@@ -35,6 +36,16 @@ class MejaWarung : AppCompatActivity() {
 
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
+        }
+
+        btnCreateMeja.setOnClickListener{
+            val intent = Intent(applicationContext, CreateMeja::class.java)
+            val bundle = Bundle()
+
+            bundle.putString("WARUNG_ID", warung.id)
+
+            intent.putExtras(bundle)
+            startActivity(intent)
         }
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView2)

@@ -52,12 +52,6 @@ class TransaksiActivity : AppCompatActivity() {
                     overridePendingTransition(0, 0)
                     true
                 }
-                R.id.nav_meja -> {
-                    val intent = Intent(this, CreateMeja::class.java)
-                    startActivity(intent)
-                    overridePendingTransition(0, 0)
-                    true
-                }
                 else -> false
             }
         }

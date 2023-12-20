@@ -335,7 +335,8 @@ class DBHelper(context: Context) :
         val query = "SELECT meja.kodemeja, meja.status, meja.idwarung " +
                 "FROM meja " +
                 "INNER JOIN warung ON meja.idwarung = warung.idwarung " +
-                "WHERE meja.idwarung = ?"
+                "WHERE meja.idwarung = ?" +
+                "ORDER BY meja.kodemeja ASC"
         val cursor = db.rawQuery(query, arrayOf(idwarung))
 
         if (cursor.moveToFirst()) {
