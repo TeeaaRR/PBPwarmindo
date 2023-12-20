@@ -15,4 +15,9 @@
         android:icon="@drawable/baseline_table_restaurant_24"
         android:title="Meja"
         />
+    <item
+        android:id="@+id/nav_transaksi"
+        android:icon="@drawable/baseline_attach_money_24"
+        android:title="Transaksi"
+        />
 </menu>

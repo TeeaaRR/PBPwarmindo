@@ -5,6 +5,9 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
+import org.w3c.dom.Text
+import kotlin.math.log
+import kotlin.math.tan
 
 class DBHelper(context: Context) :
     SQLiteOpenHelper(context, DBNAME, null, 1) {
@@ -258,7 +261,7 @@ class DBHelper(context: Context) :
         return menu
     }
 
-    fun updateMenu(idmenu: String, namamenu: String, hargamenu: String, gambarmenu: String, kategorimenu: String, idwarung: String) {
+    fun updateMenu(idmenu: String, namamenu: String, hargamenu: String, gambarmenu: String, kategorimenu: String) {
         val db = this.writableDatabase
         val contentValues = ContentValues()
 
@@ -266,7 +269,6 @@ class DBHelper(context: Context) :
         contentValues.put("hargamenu", hargamenu)
         contentValues.put("gambarmenu", gambarmenu)
         contentValues.put("kategorimenu", kategorimenu)
-        contentValues.put("idwarung", idwarung)
 
         // Update data berdasarkan ID
         db.update("menu", contentValues, "idmenu = ?", arrayOf(idmenu))
@@ -354,4 +356,39 @@ class DBHelper(context: Context) :
 
         db.delete("meja", "kodemeja = ?", arrayOf(id))
     }
+    data class Transaksi(
+        var idtransaksi: String,
+        var namapelanggan: String,
+        var tanggal: String,
+        var harga: String
+    )
+
+    fun getAllTransaksi(): ArrayList<Transaksi> {
+        val transaksiList = ArrayList<Transaksi>()
+        val MyDB = this.readableDatabase
+        val cursor = MyDB.rawQuery("SELECT * FROM transaksi", null)
+
+        val idtransaksiIndex = cursor.getColumnIndex("idtransaksi")
+        val namapelangganIndex = cursor.getColumnIndex("namapelanggan")
+        val tanggalIndex = cursor.getColumnIndex("tanggal")
+        val hargaIndex = cursor.getColumnIndex("harga")
+
+        if (idtransaksiIndex != -1 && namapelangganIndex != -1 && tanggalIndex != -1 && hargaIndex != -1) {
+            if (cursor.moveToFirst()) {
+                do {
+                    val idtransaksi = cursor.getString(idtransaksiIndex)
+                    val namapelanggan = cursor.getString(namapelangganIndex)
+                    val tanggal = cursor.getString(tanggalIndex)
+                    val harga = cursor.getString(hargaIndex)
+
+                    val transaksi = Transaksi(idtransaksi, namapelanggan, tanggal, harga)
+                    transaksiList.add(transaksi)
+                } while (cursor.moveToNext())
+            }
+        }
+
+        cursor.close()
+        return transaksiList
+    }
+
 }

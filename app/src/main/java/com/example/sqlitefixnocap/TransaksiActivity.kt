@@ -1,5 +1,6 @@
 package com.example.sqlitefixnocap
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -8,41 +9,36 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class ViewMenu : AppCompatActivity() {
+class TransaksiActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var dbHelper: DBHelper
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_view_menu)
-        val btnCreateMenu = findViewById<FloatingActionButton>(R.id.btnCreateMenu)
+        setContentView(R.layout.activity_transaksi)
 
         recyclerView = findViewById(R.id.recyclerView)
         dbHelper = DBHelper(this)
 
-        val menuList: List<DBHelper.Menu> = dbHelper.getAllMenus()
+        val transaksiList: List<DBHelper.Transaksi> = dbHelper.getAllTransaksi()
 
         // Inisialisasi adapter untuk RecyclerView
-        val adapter = MenuAdapter(this, menuList)
+        val adapter = TransaksiAdapter(this, transaksiList)
 
         // Atur layout manager untuk RecyclerView menjadi GridLayoutManager dengan 2 kolom
-        recyclerView.layoutManager = GridLayoutManager(this, 2)
+        recyclerView.layoutManager = GridLayoutManager(this, 1)
 
         // Set adapter ke RecyclerView
         recyclerView.adapter = adapter
 
-        btnCreateMenu.setOnClickListener {
-            val intent = Intent(applicationContext, CreateMenu::class.java)
-            startActivity(intent)
-        }
-
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-        bottomNavigationView.setSelectedItemId(R.id.nav_menu)
+        bottomNavigationView.setSelectedItemId(R.id.nav_transaksi)
 
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId){
-                R.id.nav_menu -> {
+                R.id.nav_transaksi -> {
                     true
                 }
                 R.id.nav_warung -> {
@@ -51,14 +47,14 @@ class ViewMenu : AppCompatActivity() {
                     overridePendingTransition(0, 0)
                     true
                 }
-                R.id.nav_meja -> {
-                    val intent = Intent(this, CreateMeja::class.java)
+                R.id.nav_menu -> {
+                    val intent = Intent(this, ViewMenu::class.java)
                     startActivity(intent)
                     overridePendingTransition(0, 0)
                     true
                 }
-                R.id.nav_transaksi -> {
-                    val intent = Intent(this, TransaksiActivity::class.java)
+                R.id.nav_meja -> {
+                    val intent = Intent(this, CreateMeja::class.java)
                     startActivity(intent)
                     overridePendingTransition(0, 0)
                     true
