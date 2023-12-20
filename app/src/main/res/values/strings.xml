@@ -4,4 +4,10 @@
         <item>Makanan</item>
         <item>Minuman</item>
     </string-array>
+    <string-array name="role_array">
+        <item>E1</item>
+        <item>E2</item>
+        <item>E3</item>
+        <item>E4</item>
+    </string-array>
 </resources>

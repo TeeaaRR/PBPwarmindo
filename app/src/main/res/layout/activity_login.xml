@@ -74,4 +74,5 @@
         android:layout_height="wrap_content"
         android:text="Belum punya akun? Regitrasi disini"
         android:layout_below="@id/btnsignin1"/>
+
 </RelativeLayout>

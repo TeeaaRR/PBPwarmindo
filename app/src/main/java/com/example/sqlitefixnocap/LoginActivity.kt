@@ -33,10 +33,35 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this@LoginActivity, "Please enter all the fields", Toast.LENGTH_SHORT).show()
             } else {
                 val checkUserPass = DB.checkUsernamePassword(user, pass)
-                if (checkUserPass) {
-                    Toast.makeText(this@LoginActivity, "Sign in successful", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(applicationContext, ViewActivity::class.java)
-                    startActivity(intent)
+                if (checkUserPass != null) {
+                    val role = checkUserPass.role
+
+                    when (role) {
+                        "E1" -> {
+                            Toast.makeText(this@LoginActivity, "Sign in successful", Toast.LENGTH_SHORT).show()
+                            val intent = Intent(applicationContext, ViewActivity::class.java)
+                            startActivity(intent)
+                        }
+                        "E2" -> {
+                            Toast.makeText(this@LoginActivity, "Sign in successful", Toast.LENGTH_SHORT).show()
+                            val intent = Intent(applicationContext, KasirDashboard::class.java)
+                            startActivity(intent)
+                        }
+                        "E3" -> {
+                            Toast.makeText(this@LoginActivity, "Sign in successful", Toast.LENGTH_SHORT).show()
+                            val intent = Intent(applicationContext, PengantarDashboard::class.java)
+                            startActivity(intent)
+                        }
+                        "E4" -> {
+                            Toast.makeText(this@LoginActivity, "Sign in successful", Toast.LENGTH_SHORT).show()
+                            val intent = Intent(applicationContext, DapurDashboard::class.java)
+                            startActivity(intent)
+                        }
+                        // Tambahkan case lain untuk peran lain jika diperlukan
+                        else -> {
+                            Toast.makeText(this@LoginActivity, "Invalid Role", Toast.LENGTH_SHORT).show()
+                        }
+                    }
                 } else {
                     Toast.makeText(this@LoginActivity, "Invalid Credentials", Toast.LENGTH_SHORT).show()
                 }
