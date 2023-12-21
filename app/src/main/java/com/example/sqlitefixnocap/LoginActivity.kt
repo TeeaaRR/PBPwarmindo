@@ -22,7 +22,6 @@ class LoginActivity : AppCompatActivity() {
         username = findViewById(R.id.username1)
         password = findViewById(R.id.password1)
         btnLogin = findViewById(R.id.btnsignin1)
-        val btnRegis = findViewById<TextView>(R.id.regis)
         DB = DBHelper(this)
 
         btnLogin.setOnClickListener {
@@ -66,10 +65,6 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(this@LoginActivity, "Invalid Credentials", Toast.LENGTH_SHORT).show()
                 }
             }
-        }
-        btnRegis.setOnClickListener {
-            val intent = Intent(applicationContext, MainActivity::class.java)
-            startActivity(intent)
         }
     }
 }

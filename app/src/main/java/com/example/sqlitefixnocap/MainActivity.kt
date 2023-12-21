@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
                         val insert = DB.insertData(user, pass, role)
                         if (insert) {
                             Toast.makeText(this@MainActivity, "Registered successfully", Toast.LENGTH_SHORT).show()
-                            val intent = Intent(applicationContext, LoginActivity::class.java)
+                            val intent = Intent(applicationContext, MainActivity::class.java)
                             startActivity(intent)
                         } else {
                             Toast.makeText(this@MainActivity, "Registration failed", Toast.LENGTH_SHORT).show()

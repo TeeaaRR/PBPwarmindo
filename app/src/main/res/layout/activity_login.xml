@@ -67,12 +67,4 @@
         app:layout_constraintTop_toBottomOf="@+id/password1"
         app:strokeColor="#E5B07E"
         app:strokeWidth="2dp" />
-
-    <TextView
-        android:id="@+id/regis"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Belum punya akun? Regitrasi disini"
-        android:layout_below="@id/btnsignin1"/>
-
 </RelativeLayout>

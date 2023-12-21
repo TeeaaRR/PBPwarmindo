@@ -16,6 +16,7 @@ import android.widget.Toast
 
 class CreateMenu : AppCompatActivity() {
     private lateinit var DB: DBHelper
+    private lateinit var cancelAdd: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,9 +30,15 @@ class CreateMenu : AppCompatActivity() {
         val tambahkan = findViewById<Button>(R.id.btnAddMenu)
         val textkategori = findViewById<Spinner>(R.id.kategoriMenu)
         val textidwarung = findViewById<Spinner>(R.id.idWarungMenu)
+        val cancelAdd = findViewById<Button>(R.id.cancelAdd)
 
         btnUploadImage.setOnClickListener {
             openGalleryGambar()
+        }
+
+        cancelAdd.setOnClickListener{
+            val intent = Intent(applicationContext, ViewMenu::class.java)
+            startActivity(intent)
         }
 
         val idWarungList = DB.getIdWarung()

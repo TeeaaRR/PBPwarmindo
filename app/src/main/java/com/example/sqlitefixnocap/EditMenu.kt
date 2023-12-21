@@ -17,6 +17,7 @@ class EditMenu : AppCompatActivity() {
     private var selectedGambarUri: String? = null
     private var selectedIDWarung: String? = null
     private lateinit var ivGambarMenu: ImageView
+    private lateinit var batalEdit: Button
     private enum class ImageType {
         GAMBAR
     }
@@ -28,10 +29,8 @@ class EditMenu : AppCompatActivity() {
         val btnSaveEdit = findViewById<Button>(R.id.saveEdit)
         val btnPilihGambar = findViewById<Button>(R.id.btnGambarMenu)
         val textidwarung = findViewById<Spinner>(R.id.idWarungEditMenu)
+        val batalEdit = findViewById<Button>(R.id.batalEdit)
         ivGambarMenu = findViewById(R.id.ivGambarMenu)
-
-
-
 
         DB = DBHelper(this)
         val idWarungList = DB.getIdWarung()
@@ -97,12 +96,15 @@ class EditMenu : AppCompatActivity() {
             val intent = Intent(applicationContext, ViewMenu::class.java)
             startActivity(intent)
         }
+        batalEdit.setOnClickListener{
+            val intent = Intent(applicationContext, ViewMenu::class.java)
+            startActivity(intent)
+        }
     }
 
     private val openGambarPicker = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
         handleImagePickerResult(uri, EditMenu.ImageType.GAMBAR)
     }
-
     private fun handleImagePickerResult(uri: Uri?, imageType: EditMenu.ImageType) {
         // Handle the result from the image picker
         if (uri != null) {

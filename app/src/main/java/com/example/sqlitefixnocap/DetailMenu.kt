@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Spinner
@@ -41,19 +42,14 @@ class DetailMenu : AppCompatActivity() {
 
         idMenuTextView.text = "${menu.idmenu}"
         namaMenuTextView.text = "${menu.namamenu}"
-        hargamenu.text = "RP.${menu.hargamenu}"
+        hargamenu.text = "${menu.hargamenu}"
         // Ganti dengan nilai harga yang sesuai
-        val hargaString = hargamenu.text.toString().removePrefix("RP.")
-// Konversi nilai harga menjadi tipe data numerik
+        val hargaString = hargamenu.text.toString().removePrefix("Rp ")
         val harga = hargaString.toDoubleOrNull() ?: 0.0
         val numberFormat = NumberFormat.getNumberInstance(Locale.getDefault())
         numberFormat.maximumFractionDigits = 3
         val formattedHarga = numberFormat.format(harga)
-        hargamenu.text = "RP.$formattedHarga"
-        // Set gambar/logo dari warung disini, misalnya menggunakan Picasso atau Glide
-        // Contoh menggunakan Picasso:
-        // Picasso.get().load(warung.logo).placeholder(R.drawable.default_logo).into(logoImageView)
-        // Ganti warung.logo dengan atribut gambar/logo di kelas Warung
+        hargamenu.text = "Rp $formattedHarga"
 
         if (!updatedGambar.isNullOrBlank()) {
             Glide.with(this)
@@ -81,6 +77,10 @@ class DetailMenu : AppCompatActivity() {
             startActivity(intent)
         }
 
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+        }
+
         btnDelete.setOnClickListener {
             val dbHelper = DBHelper(this)
             dbHelper.hapusMenu(idMenu ?: "")
@@ -89,6 +89,17 @@ class DetailMenu : AppCompatActivity() {
             val intent = Intent(applicationContext, ViewMenu::class.java)
             startActivity(intent)
             finish() // Menutup aktivitas DetailWarung setelah penghapusan data
+        }
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                // Handle the back button click
+                val intent = Intent(this, ViewMenu::class.java)
+                startActivity(intent)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }
