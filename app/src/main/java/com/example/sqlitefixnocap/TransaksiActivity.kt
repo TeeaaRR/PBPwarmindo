@@ -44,13 +44,19 @@ class TransaksiActivity : AppCompatActivity() {
                     val intent = Intent(this, ViewActivity::class.java)
                     startActivity(intent)
                     overridePendingTransition(0, 0)
-                    true
+                    false
                 }
                 R.id.nav_menu -> {
                     val intent = Intent(this, ViewMenu::class.java)
                     startActivity(intent)
                     overridePendingTransition(0, 0)
-                    true
+                    false
+                }
+                R.id.nav_createUser -> {
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    overridePendingTransition(0, 0)
+                    false
                 }
                 else -> false
             }

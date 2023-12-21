@@ -238,8 +238,7 @@ class DBHelper(context: Context) :
     fun getAllMenus(): ArrayList<Menu> {
         val menusList = ArrayList<Menu>()
         val MyDB = this.readableDatabase
-        val cursor = MyDB.rawQuery("SELECT * FROM menu", null)
-
+        val cursor = MyDB.rawQuery("SELECT * FROM menu ORDER BY kategorimenu ASC", null)
         val idmenuIndex = cursor.getColumnIndex("idmenu")
         val namamenuIndex = cursor.getColumnIndex("namamenu")
         val hargamenuIndex = cursor.getColumnIndex("hargamenu")
@@ -334,7 +333,8 @@ class DBHelper(context: Context) :
         val query = "SELECT menu.idmenu, menu.namamenu AS nama_menu, menu.hargamenu AS harga_menu, menu.gambarmenu, menu.kategorimenu AS kategori_menu, menu.idwarung AS id_warung " +
                 "FROM menu " +
                 "INNER JOIN warung ON menu.idwarung = warung.idwarung " +
-                "WHERE menu.idwarung = ?"
+                "WHERE menu.idwarung = ?" +
+                "ORDER BY menu.kategorimenu"
         val cursor = db.rawQuery(query, arrayOf(idwarung))
 
         if (cursor.moveToFirst()) {

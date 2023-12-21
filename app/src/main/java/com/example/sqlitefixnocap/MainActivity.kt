@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -61,8 +62,38 @@ class MainActivity : AppCompatActivity() {
         }
 
         signin.setOnClickListener {
-            val intent = Intent(applicationContext, LoginActivity::class.java)
+            val intent = Intent(applicationContext, MainActivity::class.java)
             startActivity(intent)
+        }
+
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        bottomNavigationView.setSelectedItemId(R.id.nav_createUser)
+
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId){
+                R.id.nav_createUser -> {
+                    true
+                }
+                R.id.nav_menu -> {
+                    val intent = Intent(this, ViewMenu::class.java)
+                    startActivity(intent)
+                    overridePendingTransition(0, 0)
+                    false
+                }
+                R.id.nav_transaksi -> {
+                    val intent = Intent(this, TransaksiActivity::class.java)
+                    startActivity(intent)
+                    overridePendingTransition(0, 0)
+                    false
+                }
+                R.id.nav_warung -> {
+                    val intent = Intent(this, ViewActivity::class.java)
+                    startActivity(intent)
+                    overridePendingTransition(0, 0)
+                    false
+                }
+                else -> false
+            }
         }
     }
 }
