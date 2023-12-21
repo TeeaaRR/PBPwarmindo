@@ -10,11 +10,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="10dp">
+        <TextView
+            android:id="@+id/addUserTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Insert Warung"
+            android:textSize="25dp"
+            android:textAlignment="center"/>
         <EditText
             android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="User Name"
+            android:layout_below="@id/addUserTitle"
+            android:background="@drawable/outline_square_24"
+            android:drawableStart="@drawable/baseline_person_outline_24"
+            android:drawablePadding="10dp"
+            android:drawableTint="#98592A"
+            android:hint="Username"
+            android:padding="10dp"
             android:inputType="text"
             android:layout_marginTop="50dp"/>
 
@@ -22,44 +35,56 @@
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
+            android:layout_marginTop="40dp"
+            android:layout_below="@id/username"
+            android:background="@drawable/outline_square_24"
+            android:drawableStart="@drawable/outline_lock_24"
+            android:drawablePadding="10dp"
+            android:drawableTint="#98592A"
             android:inputType="textPassword"
-            android:layout_marginTop="50dp"
-            android:layout_below="@+id/username"/>
+            android:hint="Password"
+            android:padding="10dp"/>
 
         <EditText
             android:id="@+id/repassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Retype Password"
+            android:layout_marginTop="40dp"
+            android:layout_below="@id/password"
+            android:background="@drawable/outline_square_24"
+            android:drawableStart="@drawable/outline_lock_24"
+            android:drawablePadding="10dp"
+            android:drawableTint="#98592A"
             android:inputType="textPassword"
-            android:layout_marginTop="50dp"
-            android:layout_below="@+id/password"/>
+            android:padding="10dp"/>
 
+        <TextView
+            android:id="@+id/labelRole"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pilih Role"
+            android:textSize="10dp"
+            android:layout_marginTop="30dp"
+            android:labelFor="@id/idrole"
+            android:layout_below="@id/repassword"
+            android:textAlignment="center"/>
         <Spinner
             android:id="@+id/idrole"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:entries="@array/role_array"
             android:hint="Id Role"
-            android:layout_marginTop="50dp"
-            android:layout_below="@+id/repassword"/>
+            android:layout_below="@id/labelRole"/>
 
         <Button
             android:id="@+id/btnsignup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Register"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="40dp"
             android:layout_below="@+id/idrole"/>
 
-        <Button
-            android:id="@+id/btnsignin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="BATALKAN"
-            android:layout_marginTop="50dp"
-            android:layout_below="@+id/btnsignup"/>
     </RelativeLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

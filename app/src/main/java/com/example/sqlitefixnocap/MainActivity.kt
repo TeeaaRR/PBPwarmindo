@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var repassword: EditText
     private lateinit var idrole: Spinner
     private lateinit var signup: Button
-    private lateinit var signin: Button
     private lateinit var DB: DBHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,7 +28,6 @@ class MainActivity : AppCompatActivity() {
         repassword = findViewById(R.id.repassword)
         idrole = findViewById(R.id.idrole)
         signup = findViewById(R.id.btnsignup)
-        signin = findViewById(R.id.btnsignin)
         DB = DBHelper(this)
 
         signup.setOnClickListener {
@@ -59,11 +57,6 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this@MainActivity, "Passwords not matching", Toast.LENGTH_SHORT).show()
                 }
             }
-        }
-
-        signin.setOnClickListener {
-            val intent = Intent(applicationContext, MainActivity::class.java)
-            startActivity(intent)
         }
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
