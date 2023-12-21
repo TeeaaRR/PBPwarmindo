@@ -62,11 +62,8 @@ class MejaAdapter(private val context: Context, private val mejaList: List<DBHel
                 // Delete the item from the database
                 val dbHelper = DBHelper(context)
                 dbHelper.hapusMeja(meja.kodemeja)
-
                 val intent = Intent(context, ViewActivity::class.java)
                 context.startActivity(intent)
-
-                // Notify the adapter about the data change
                 notifyDataSetChanged()
             }
 

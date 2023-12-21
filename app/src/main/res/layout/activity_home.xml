@@ -17,6 +17,7 @@
     <EditText
         android:id="@+id/edIdWarung"
         android:layout_width="match_parent"
+        android:inputType="text"
         android:hint="Masukkan Id Warung"
         android:layout_height="45dp"
         android:background="@drawable/outline_square_24"
@@ -29,6 +30,7 @@
     <EditText
         android:id="@+id/edNamaWarung"
         android:layout_width="match_parent"
+        android:inputType="text"
         android:hint="Masukkan Nama Warung"
         android:layout_height="45dp"
         android:background="@drawable/outline_square_24"

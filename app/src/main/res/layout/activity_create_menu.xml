@@ -18,6 +18,7 @@
     <EditText
         android:id="@+id/edIdMenu"
         android:layout_width="match_parent"
+        android:inputType="text"
         android:hint="Masukkan Id Menu"
         android:layout_height="45dp"
         android:layout_below="@id/textCreate"
@@ -31,6 +32,7 @@
     <EditText
         android:id="@+id/edNamaMenu"
         android:layout_width="match_parent"
+        android:inputType="text"
         android:hint="Masukkan Nama Menu"
         android:layout_height="45dp"
         android:layout_below="@id/edIdMenu"
@@ -44,6 +46,7 @@
     <EditText
         android:id="@+id/hargaMenu"
         android:layout_width="match_parent"
+        android:inputType="text"
         android:hint="Masukkan Harga"
         android:layout_height="45dp"
         android:layout_below="@id/edNamaMenu"

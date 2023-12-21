@@ -21,6 +21,7 @@
         android:id="@+id/etNamaWarung"
         android:layout_width="match_parent"
         android:hint="Masukkan Nama Warung"
+        android:inputType="text"
         android:layout_height="45dp"
         android:background="@drawable/outline_square_24"
         android:drawableStart="@drawable/outline_store_mall_directory_24"
