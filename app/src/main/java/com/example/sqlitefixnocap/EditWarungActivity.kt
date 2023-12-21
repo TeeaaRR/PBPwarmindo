@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
@@ -79,6 +80,7 @@ class EditWarungActivity : AppCompatActivity() {
 
             val dbHelper = DBHelper(this)
             dbHelper.updateWarung(idWarung ?: "", editedNama, finalLogoUri ?: "", finalGambarUri ?: "")
+            Toast.makeText(this@EditWarungActivity, "Edit Data Successful", Toast.LENGTH_SHORT).show()
 
             val intent = Intent(applicationContext, ViewActivity::class.java)
             startActivity(intent)

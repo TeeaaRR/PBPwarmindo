@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import com.bumptech.glide.Glide
 
@@ -93,6 +94,7 @@ class EditMenu : AppCompatActivity() {
                 // Memanggil fungsi updateMenu pada DBHelper dengan gambar baru
             val dbHelper = DBHelper(this)
             dbHelper.updateMenu(idMenu ?: "", editedNama, editedHarga, finalGambarUri ?: "", editedKategori, idwarungmenu)
+            Toast.makeText(this@EditMenu, "Edit Data Successful", Toast.LENGTH_SHORT).show()
             // Memanggil fungsi updateWarung pada DBHelper
             val intent = Intent(applicationContext, ViewMenu::class.java)
             startActivity(intent)
